@@ -1,0 +1,2301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      The First Online International Conference on Second Language Writing
+    </title>
+    <meta
+      name="description"
+      content="Official hub for The First Online International Conference on Second Language Writing (11–12 Feb 2026). Programme, Google Meet links, video help, and 1-page PDF troubleshooting guide."
+    />
+
+    <style>
+      :root {
+        --bg: #070b15;
+        --panel: #0d1426;
+        --panel2: #0b1222;
+        --line: #1a2a48;
+        --text: #e8effa;
+        --muted: #aab7d3;
+        --muted2: #8ea1c6;
+
+        --accent: #60a5fa;
+        --accent2: #22c55e;
+        --warn: #f59e0b;
+        --danger: #ef4444;
+
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+        --radius: 18px;
+        --radius2: 14px;
+
+        --mono:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          'Liberation Mono', 'Courier New', monospace;
+        --sans:
+          ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--text);
+        background:
+          radial-gradient(
+            1200px 700px at 15% 0%,
+            rgba(96, 165, 250, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 600px at 90% 10%,
+            rgba(34, 197, 94, 0.12),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 700px at 65% 110%,
+            rgba(245, 158, 11, 0.1),
+            transparent 60%
+          ),
+          var(--bg);
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:hover {
+        opacity: 0.92;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 18px 18px 70px;
+      }
+
+      /* TOP NAV (more visible) */
+      .topnav {
+        position: sticky;
+        top: 10px;
+        z-index: 80;
+        margin: 10px 0 14px;
+      }
+      .topnav-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(7, 11, 21, 0.7);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+      .logos {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+        object-fit: cover;
+        flex: 0 0 auto;
+      }
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+      .brand-title {
+        font-weight: 950;
+        letter-spacing: -0.01em;
+        font-size: 12.5px;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 420px;
+      }
+      .brand-sub {
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 420px;
+      }
+
+      .menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .menu a {
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(96, 165, 250, 0.3);
+        background: rgba(96, 165, 250, 0.12);
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: -0.01em;
+        transition:
+          transform 0.06s ease,
+          background 0.2s ease,
+          border 0.2s ease,
+          opacity 0.2s ease;
+      }
+      .menu a:hover {
+        background: rgba(96, 165, 250, 0.2);
+        border-color: rgba(96, 165, 250, 0.42);
+      }
+      .menu a:active {
+        transform: translateY(1px);
+      }
+      .menu a.active {
+        background: rgba(34, 197, 94, 0.16);
+        border-color: rgba(34, 197, 94, 0.38);
+      }
+
+      @media (max-width: 980px) {
+        .topnav-inner {
+          border-radius: var(--radius2);
+        }
+        .brand {
+          min-width: 0;
+        }
+        .brand-title,
+        .brand-sub {
+          max-width: 100%;
+        }
+        .menu {
+          justify-content: flex-start;
+        }
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        padding: 28px 22px 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(
+          180deg,
+          rgba(96, 165, 250, 0.12),
+          rgba(13, 20, 38, 0.78)
+        );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .hero:before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background:
+          radial-gradient(
+            700px 220px at 18% 0%,
+            rgba(96, 165, 250, 0.45),
+            transparent 62%
+          ),
+          radial-gradient(
+            520px 240px at 85% 18%,
+            rgba(34, 197, 94, 0.32),
+            transparent 62%
+          );
+        filter: blur(18px);
+        opacity: 0.55;
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        display: grid;
+        gap: 12px;
+      }
+
+      .topline {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.65);
+        border-radius: 999px;
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+      .dot.g {
+        background: var(--accent2);
+      }
+      .dot.w {
+        background: var(--warn);
+      }
+      .dot.r {
+        background: var(--danger);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(28px, 3.4vw, 48px);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+      }
+      .sub {
+        margin: 0;
+        max-width: 90ch;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.62);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 750;
+        font-size: 14px;
+        transition:
+          transform 0.06s ease,
+          background 0.2s ease,
+          border 0.2s ease,
+          opacity 0.2s ease;
+        user-select: none;
+      }
+      .btn:hover {
+        background: rgba(26, 42, 72, 0.45);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn.primary {
+        background: rgba(96, 165, 250, 0.18);
+        border-color: rgba(96, 165, 250, 0.35);
+      }
+      .btn.primary:hover {
+        background: rgba(96, 165, 250, 0.26);
+      }
+      .btn.good {
+        background: rgba(34, 197, 94, 0.14);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .btn.good:hover {
+        background: rgba(34, 197, 94, 0.2);
+      }
+      .btn.ghost {
+        background: rgba(11, 18, 34, 0.35);
+      }
+
+      /* Sticky quick bar */
+      .sticky {
+        position: sticky;
+        top: 92px; /* sits below top nav */
+        z-index: 60;
+        margin-top: 14px;
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(7, 11, 21, 0.62);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .bar-left {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .bar-title {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 850;
+        letter-spacing: -0.01em;
+        font-size: 13px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .mono {
+        font-family: var(--mono);
+      }
+      .bar-right {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .small {
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      /* Layout */
+      .grid {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 16px;
+      }
+      @media (max-width: 980px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .bar {
+          border-radius: var(--radius2);
+        }
+        .sticky {
+          top: 120px;
+        }
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(13, 20, 38, 0.72);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .hd {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .hd h2 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+      .bd {
+        padding: 16px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+      .muted2 {
+        color: var(--muted2);
+      }
+      .tiny {
+        font-size: 12px;
+      }
+
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+      }
+      @media (max-width: 520px) {
+        .kpis {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kpi {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+      }
+      .kpi .label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .kpi .value {
+        margin-top: 2px;
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      /* Rooms */
+      .rooms {
+        display: grid;
+        gap: 10px;
+      }
+      .room {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .room h3 {
+        margin: 0 0 2px;
+        font-size: 14px;
+      }
+      .room .meta {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .room .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 9px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(13, 20, 38, 0.45);
+        color: var(--muted);
+        font-size: 12px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .chip:hover {
+        color: var(--text);
+      }
+
+      /* Programme */
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .search {
+        flex: 1;
+        min-width: 220px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      input[type='search'],
+      select {
+        width: 100%;
+        padding: 10px 11px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: rgba(7, 11, 21, 0.55);
+        color: var(--text);
+        outline: none;
+      }
+      select {
+        max-width: 260px;
+      }
+      .schedule {
+        display: grid;
+        gap: 10px;
+      }
+      .slot {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+      @media (max-width: 650px) {
+        .slot {
+          grid-template-columns: 1fr;
+        }
+      }
+      .timebox {
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px dashed rgba(96, 165, 250, 0.35);
+        background: rgba(96, 165, 250, 0.09);
+      }
+      .timebox .t {
+        font-weight: 900;
+        letter-spacing: 0.02em;
+      }
+      .timebox .d {
+        margin-top: 2px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .slot h4 {
+        margin: 0;
+        font-size: 14px;
+      }
+      .slot p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .slot .row {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 9px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(7, 11, 21, 0.4);
+        font-size: 12px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .now {
+        border-color: rgba(34, 197, 94, 0.35);
+        background: rgba(34, 197, 94, 0.08);
+      }
+
+      /* Tracks + lists */
+      .list {
+        display: grid;
+        gap: 10px;
+      }
+      .item {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+      }
+      .item .title {
+        font-weight: 900;
+      }
+      .item .desc {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 16px;
+      }
+      @media (max-width: 980px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .footer {
+        margin-top: 18px;
+        padding: 16px 4px 0;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* Video cards */
+      .video-card {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(11, 18, 34, 0.55);
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .video-left {
+        min-width: 0;
+      }
+      .video-title {
+        font-weight: 900;
+      }
+      .video-meta {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .video-tags {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .video-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      /* Featured video wrapper */
+      .video-frame {
+        margin-top: 10px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: rgba(7, 11, 21, 0.45);
+      }
+
+      /* Keynote cards with pictures */
+      .keynote {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .keynote-left {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        min-width: 0;
+      }
+      .keynote-photo {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        background: rgba(7, 11, 21, 0.45);
+        flex: 0 0 auto;
+      }
+      .keynote-name {
+        font-weight: 950;
+        line-height: 1.2;
+      }
+      .keynote-aff {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .keynote-note {
+        margin-top: 6px;
+        color: var(--muted2);
+        font-size: 13px;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        background: rgba(7, 11, 21, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 12px;
+        color: var(--text);
+        font-weight: 900;
+        font-size: 13px;
+        box-shadow: var(--shadow);
+        display: none;
+        z-index: 90;
+      }
+      .toast.show {
+        display: block;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+          color: #000;
+        }
+        .topnav,
+        .sticky,
+        .cta,
+        .toast {
+          display: none !important;
+        }
+        .card,
+        .hero {
+          box-shadow: none;
+          background: #fff;
+          border: 1px solid #ccc;
+        }
+        .hd {
+          background: #f5f5f5;
+        }
+        .slot,
+        .room,
+        .item,
+        .kpi,
+        .video-card {
+          background: #fff;
+        }
+        a {
+          color: #000;
+        }
+      }
+    </style>
+
+    <!-- jsPDF for the 1-page quick help PDF -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- More visible menu + logos -->
+      <div class="topnav" aria-label="Primary navigation">
+        <div class="topnav-inner">
+          <div class="brand">
+            <div class="logos" aria-hidden="false">
+              <!-- ✅ Replace with your real files/URLs -->
+              <img
+                class="logo"
+                id="univLogo"
+                src="assets/university-logo.png"
+                alt="University of Tlemcen logo"
+                loading="lazy"
+              />
+              <img
+                class="logo"
+                id="labLogo"
+                src="assets/flpatp-logo.png"
+                alt="FLPATP Laboratory logo"
+                loading="lazy"
+              />
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Conference Hub</div>
+              <div class="brand-sub">
+                University of Tlemcen · FLPATP Laboratory · 11–12 Feb 2026
+              </div>
+            </div>
+          </div>
+
+          <div class="menu" id="menu">
+            <a href="#programme">Programme</a>
+            <a href="#rooms">Rooms</a>
+            <a href="#video-help">Video Help</a>
+            <a href="#tracks">Tracks</a>
+            <a href="#keynotes">Keynotes</a>
+            <a href="#committees">Committees</a>
+            <a href="#contact">Support</a>
+          </div>
+        </div>
+      </div>
+
+      <header class="hero" id="top">
+        <div class="hero-inner">
+          <div class="topline">
+            <span class="badge"
+              ><span class="dot"></span> University of Tlemcen (Algeria)</span
+            >
+            <span class="badge"
+              ><span class="dot g"></span> Online via Google Meet</span
+            >
+            <span class="badge"
+              ><span class="dot w"></span> Programme in <strong>GMT+1</strong> ·
+              your timezone: <span id="tzLabel" class="mono">…</span></span
+            >
+          </div>
+
+          <h1>
+            The First Online International Conference on Second Language Writing
+          </h1>
+
+          <p class="sub">
+            Official conference hub with one-click room access, searchable
+            programme (Day 1 & Day 2), Google Meet help videos, and a 1-page
+            troubleshooting PDF for participants.
+          </p>
+
+          <div class="cta">
+            <a
+              class="btn primary"
+              id="btnJoinMain"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              >Join Main Hall</a
+            >
+            <a class="btn good" id="btnDownloadPDF" href="#" rel="noopener"
+              >Download quick help PDF</a
+            >
+            <button class="btn ghost" id="btnPrint" type="button">
+              Print / Save PDF
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="sticky">
+        <div class="bar">
+          <div class="bar-left">
+            <div class="bar-title">
+              <span class="badge"><span class="dot g"></span> Live hub</span>
+              <span class="pill">Dates: <strong>11–12 Feb 2026</strong></span>
+              <span class="pill"
+                >Times shown in: <strong id="tzValue">—</strong></span
+              >
+            </div>
+            <span class="pill">Current: <strong id="liveLabel">—</strong></span>
+          </div>
+
+          <div class="bar-right">
+            <span class="pill mono" id="localClock">—</span>
+            <a
+              class="btn primary small"
+              id="btnJoinLive"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              >Join live room</a
+            >
+            <span class="chip" id="btnCopyHub">Copy hub link</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Programme -->
+        <section class="card" id="programme">
+          <div class="hd">
+            <h2>Programme (Day 1 & Day 2)</h2>
+            <span class="muted tiny"
+              >Times auto-display in your local timezone.</span
+            >
+          </div>
+          <div class="bd">
+            <div class="kpis">
+              <div class="kpi">
+                <div class="label">Your timezone</div>
+                <div class="value" id="tzKpi">—</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Main Hall link</div>
+                <div class="value mono" id="mainHallShort">—</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Tip</div>
+                <div class="value">Join 10 minutes early</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px" class="toolbar">
+              <div class="search">
+                <input
+                  id="q"
+                  type="search"
+                  placeholder="Search (e.g., Panel 8, keynote, moderator name)…"
+                />
+              </div>
+              <select id="dayFilter" title="Filter by day">
+                <option value="all" selected>All days</option>
+                <option value="day1">Day 1 (11 Feb)</option>
+                <option value="day2">Day 2 (12 Feb)</option>
+              </select>
+              <select id="typeFilter" title="Filter by type">
+                <option value="all" selected>All types</option>
+                <option value="opening">Opening</option>
+                <option value="keynote">Keynote</option>
+                <option value="panel">Panel</option>
+                <option value="break">Break</option>
+                <option value="closing">Closing</option>
+              </select>
+            </div>
+
+            <div class="schedule" id="schedule"></div>
+
+            <p class="muted tiny" style="margin: 12px 0 0">
+              Note: Some sessions occur at the same time in different rooms
+              (parallel panels). Use “Join room” on the relevant panel.
+            </p>
+          </div>
+        </section>
+
+        <!-- Rooms -->
+        <aside class="card" id="rooms">
+          <div class="hd">
+            <h2>Google Meet Rooms</h2>
+            <span class="muted tiny">One-click join + copy links.</span>
+          </div>
+          <div class="bd">
+            <div class="rooms" id="roomList"></div>
+
+            <div class="item" style="margin-top: 12px">
+              <div class="title">Fast support</div>
+              <div class="desc">
+                If you cannot join: refresh → try Chrome → switch Wi-Fi/hotspot
+                → rejoin. If still blocked, open the Help Desk or message the
+                moderator in chat.
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Video Help -->
+      <section class="card" id="video-help" style="margin-top: 16px">
+        <div class="hd">
+          <h2>Video Help: Google Meet</h2>
+          <span class="muted tiny"
+            >Join, screen share, and fix mic/camera issues.</span
+          >
+        </div>
+
+        <div class="bd">
+          <div class="toolbar">
+            <div class="search">
+              <input
+                id="videoSearch"
+                type="search"
+                placeholder="Search videos (mic, camera, screen share, join)…"
+              />
+            </div>
+            <select id="videoCategory" title="Filter video topic">
+              <option value="all" selected>All topics</option>
+            </select>
+          </div>
+
+          <div class="item" style="margin-bottom: 12px">
+            <div class="title">Featured video</div>
+            <div class="desc muted">
+              Start here if it’s your first time using Google Meet.
+            </div>
+
+            <div class="video-frame">
+              <div style="position: relative; padding-top: 56.25%">
+                <iframe
+                  id="featuredVideo"
+                  title="Google Meet help video"
+                  style="
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                  "
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <p class="muted tiny" style="margin: 10px 0 0">
+              If YouTube is blocked on your network, try mobile data / hotspot
+              or watch later.
+            </p>
+          </div>
+
+          <div class="list" id="videoGrid"></div>
+        </div>
+      </section>
+
+      <div class="two-col">
+        <!-- Tracks -->
+        <section class="card" id="tracks">
+          <div class="hd">
+            <h2>Conference Tracks</h2>
+            <span class="muted tiny">Six thematic tracks</span>
+          </div>
+          <div class="bd">
+            <div class="list" id="tracksList"></div>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section class="card" id="about">
+          <div class="hd">
+            <h2>About the Conference</h2>
+            <span class="muted tiny">Overview</span>
+          </div>
+          <div class="bd">
+            <p style="margin: 0" class="muted">
+              Second language writing is a demanding, multifaceted skill
+              involving linguistic, cultural, and rhetorical dimensions. This
+              conference brings together teachers, researchers, and doctoral
+              students to share and discuss key issues in L2 writing and
+              research writing, including professional development and the
+              implications of generative AI.
+            </p>
+
+            <div class="kpis" style="margin-top: 12px">
+              <div class="kpi">
+                <div class="label">Presidents of the conference</div>
+                <div class="value">
+                  Dr. Fatima Zohra Belkhir · Dr. Wafa Zekri
+                </div>
+              </div>
+              <div class="kpi">
+                <div class="label">Host</div>
+                <div class="value">University of Tlemcen (Algeria)</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Partner Laboratory</div>
+                <div class="value">FLPATP Laboratory</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Keynotes -->
+      <section class="card" id="keynotes" style="margin-top: 16px">
+        <div class="hd">
+          <h2>Keynote Speakers</h2>
+          <span class="muted tiny">From the official CFP</span>
+        </div>
+        <div class="bd">
+          <div class="list" id="keynoteList"></div>
+        </div>
+      </section>
+
+      <!-- Committees -->
+      <section class="card" id="committees" style="margin-top: 16px">
+        <div class="hd">
+          <h2>Committees</h2>
+          <span class="muted tiny">Scientific & Organising</span>
+        </div>
+        <div class="bd">
+          <div class="two-col" style="margin-top: 0">
+            <div class="item">
+              <div class="title">Scientific Committee</div>
+              <div class="desc" id="scientificCommittee"></div>
+            </div>
+            <div class="item">
+              <div class="title">Organising Committee</div>
+              <div class="desc" id="organisingCommittee"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Support / Contact -->
+      <section class="card" id="contact" style="margin-top: 16px">
+        <div class="hd">
+          <h2>Support</h2>
+          <span class="muted tiny">Update with your real contacts</span>
+        </div>
+        <div class="bd">
+          <div class="two-col" style="margin-top: 0">
+            <div class="item">
+              <div class="title">Help Desk (live)</div>
+              <div class="desc">
+                Use this room if you have trouble joining a session, audio/video
+                issues, or screen sharing problems.
+              </div>
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <a
+                  class="btn good"
+                  id="btnJoinHelpDesk"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  >Open Help Desk</a
+                >
+                <span class="chip" id="btnCopyHelpDesk">Copy link</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="title">Contact (edit)</div>
+              <div class="desc">
+                Email: <span class="mono">support@example.com</span><br />
+                WhatsApp: <span class="mono">+213 xx xx xx xx</span><br />
+                Tip: include a screenshot + your device
+                (Windows/Mac/Android/iOS) + browser (Chrome/Edge/Firefox).
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        © <span id="year"></span> · The First Online International Conference on
+        Second Language Writing · Online via Google Meet
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      /**************************************************************
+       * ✅ EDITABLE DATA (programme + links + videos + committees)
+       **************************************************************/
+
+      // Google Meet rooms (from your programme)
+      const ROOMS = {
+        main: {
+          name: 'Main Hall',
+          purpose: 'Opening, keynotes, closing',
+          url: 'https://meet.google.com/mmn-bncu-cht',
+        },
+
+        p1: {
+          name: 'Panel Room 1',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/gkd-fiwn-pzj',
+        },
+        p2: {
+          name: 'Panel Room 2',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/oqj-ynfg-syn',
+        },
+        p3: {
+          name: 'Panel Room 3',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/fwp-sugv-ghh',
+        },
+        p4: {
+          name: 'Panel Room 4',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/jtw-anpv-owm',
+        },
+        p5: {
+          name: 'Panel Room 5',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/mcb-gknq-dfi',
+        },
+        p6: {
+          name: 'Panel Room 6',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/srr-ckeu-fmd',
+        },
+
+        p7: {
+          name: 'Panel Room 7',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/ayx-mzav-vjs',
+        },
+        p8: {
+          name: 'Panel Room 8',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/kcg-ewpv-aoi',
+        },
+        p9: {
+          name: 'Panel Room 9',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/xkq-erpv-uzj',
+        },
+        p10: {
+          name: 'Panel Room 10',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/iqo-zvjs-qau',
+        },
+        p11: {
+          name: 'Panel Room 11',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/dqb-gfmd-rzf',
+        },
+        p12: {
+          name: 'Panel Room 12',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/ctc-yakm-fct',
+        },
+
+        p14: {
+          name: 'Panel Room 14',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/ajn-ofax-qkn',
+        },
+        p15: {
+          name: 'Panel Room 15',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/jns-ojsd-xqq',
+        },
+        p16: {
+          name: 'Panel Room 16',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/ktu-xhus-dvv',
+        },
+        p17: {
+          name: 'Panel Room 17',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/jxf-jzdx-mnq',
+        },
+        p18: {
+          name: 'Panel Room 18',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/nfu-cyix-cko',
+        },
+        p19: {
+          name: 'Panel Room 19',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/xkn-mrbt-hpc',
+        },
+        p20: {
+          name: 'Panel Room 20',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/ujr-kbci-tzu',
+        },
+        p21: {
+          name: 'Panel Room 21',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/usw-pdav-odn',
+        },
+        p22: {
+          name: 'Panel Room 22',
+          purpose: 'Panels',
+          url: 'https://meet.google.com/vvs-upui-rfr',
+        },
+
+        // Optional dedicated help desk (you can point it to a special Meet if you create one)
+        help: {
+          name: 'Help Desk',
+          purpose: 'Live technical support',
+          url: 'https://meet.google.com/mmn-bncu-cht',
+        },
+      };
+
+      // Programme sessions in GMT+1 (Algeria time). Visitors see local times automatically.
+      const SESSIONS = [
+        // =======================
+        // DAY 1 (11 Feb 2026)
+        // =======================
+        {
+          id: 'd1-opening',
+          day: 'day1',
+          type: 'opening',
+          title: 'Opening Session',
+          desc: 'Opening session.',
+          startGMT1: '2026-02-11T09:00:00+01:00',
+          endGMT1: '2026-02-11T09:45:00+01:00',
+          roomKey: 'main',
+          moderator: '—',
+        },
+        {
+          id: 'd1-keynote-morning',
+          day: 'day1',
+          type: 'keynote',
+          title: 'Morning Keynote Speakers Session',
+          desc: 'Moderator: Dr. F.Z. BELKHIR',
+          startGMT1: '2026-02-11T10:00:00+01:00',
+          endGMT1: '2026-02-11T11:30:00+01:00',
+          roomKey: 'main',
+          moderator: 'Dr. F.Z. BELKHIR',
+        },
+
+        // Morning Panels 11:30–12:30 (parallel)
+        ...[
+          ['p1', 'Panel 1', 'Dr Manel Mizab'],
+          ['p2', 'Panel 2', 'Dr. Adder FZ'],
+          ['p3', 'Panel 3', 'Prof. Radia Guerza'],
+          ['p4', 'Panel 4', 'Prof. Nadia Ghounane'],
+          ['p5', 'Panel 5', 'Dr. Kamila Ghouali'],
+          ['p6', 'Panel 6', 'Dr. Sarra Menal Ferkache'],
+        ].map(([roomKey, panel, moderator], i) => ({
+          id: `d1-panels-am-${i + 1}`,
+          day: 'day1',
+          type: 'panel',
+          title: `Morning Panels — ${panel}`,
+          desc: `Moderator: ${moderator}`,
+          startGMT1: '2026-02-11T11:30:00+01:00',
+          endGMT1: '2026-02-11T12:30:00+01:00',
+          roomKey,
+          moderator,
+        })),
+
+        // Break
+        {
+          id: 'd1-break',
+          day: 'day1',
+          type: 'break',
+          title: 'Break',
+          desc: 'Break between morning and afternoon sessions.',
+          startGMT1: '2026-02-11T12:30:00+01:00',
+          endGMT1: '2026-02-11T14:00:00+01:00',
+          roomKey: 'main',
+          moderator: '—',
+          noJoin: true,
+        },
+
+        // Afternoon keynote
+        {
+          id: 'd1-keynote-afternoon',
+          day: 'day1',
+          type: 'keynote',
+          title: 'Afternoon Keynote Speakers Session',
+          desc: 'Moderator: Dr. Wafa Zekri',
+          startGMT1: '2026-02-11T14:00:00+01:00',
+          endGMT1: '2026-02-11T15:00:00+01:00',
+          roomKey: 'main',
+          moderator: 'Dr. Wafa Zekri',
+        },
+
+        // Afternoon Panels 15:00–16:00 (parallel)
+        ...[
+          ['p7', 'Panel 7', 'Dr. Yassamina Abdat'],
+          ['p8', 'Panel 8', 'Dr Fouzia Bennacer'],
+          ['p9', 'Panel 9', 'Dr Yasser Benmoussa'],
+          ['p10', 'Panel 10', 'Dr. Nour El Houda Benlakhdar'],
+          ['p11', 'Panel 11', 'Dr Abdelkader Bensafa'],
+          ['p12', 'Panel 12', 'Prof. Hafida Hamzaoui'],
+        ].map(([roomKey, panel, moderator], i) => ({
+          id: `d1-panels-pm-${i + 1}`,
+          day: 'day1',
+          type: 'panel',
+          title: `Afternoon Panels — ${panel}`,
+          desc: `Moderator: ${moderator}`,
+          startGMT1: '2026-02-11T15:00:00+01:00',
+          endGMT1: '2026-02-11T16:00:00+01:00',
+          roomKey,
+          moderator,
+        })),
+
+        // =======================
+        // DAY 2 (12 Feb 2026)
+        // =======================
+        {
+          id: 'd2-keynote-morning',
+          day: 'day2',
+          type: 'keynote',
+          title: 'Morning Keynote Speakers Session',
+          desc: 'Moderator: Dr. F.Z. Adder',
+          startGMT1: '2026-02-12T09:00:00+01:00',
+          endGMT1: '2026-02-12T10:00:00+01:00',
+          roomKey: 'main',
+          moderator: 'Dr. F.Z. Adder',
+        },
+
+        // Morning Panels 10:00–11:00 (parallel)
+        ...[
+          ['p1', 'Panel 1', 'TBD'],
+          ['p2', 'Panel 2', 'Dr. Bekhta Belaid'],
+          ['p3', 'Panel 3', 'Ms Maroua Houachine'],
+          ['p4', 'Panel 4', 'Ms. Sonia Wei Jie Tiao'],
+          ['p5', 'Panel 5', 'Mrs. Asma Belkhir'],
+          ['p6', 'Panel 6', 'Prof. Faiza Senouci Meberbeche'],
+        ].map(([roomKey, panel, moderator], i) => ({
+          id: `d2-panels-10-${i + 1}`,
+          day: 'day2',
+          type: 'panel',
+          title: `Morning Panels — ${panel}`,
+          desc: `Moderator: ${moderator}`,
+          startGMT1: '2026-02-12T10:00:00+01:00',
+          endGMT1: '2026-02-12T11:00:00+01:00',
+          roomKey,
+          moderator,
+        })),
+
+        // Panels 7–12 11:00–12:00 (parallel)
+        ...[
+          ['p7', 'Panel 7', 'Dr Imane Berrouba Tani'],
+          ['p8', 'Panel 8', 'Ms. Fatma Zohra Hadj Ameur'],
+          ['p9', 'Panel 9', 'Ms. Feriel Abid'],
+          ['p10', 'Panel 10', 'Prof. Wassila Bouklikha Graia'],
+          ['p11', 'Panel 11', 'Dr. Khadidja Hammoudi'],
+          ['p12', 'Panel 12', 'Ms Zineb Benayad'],
+        ].map(([roomKey, panel, moderator], i) => ({
+          id: `d2-panels-11-${i + 1}`,
+          day: 'day2',
+          type: 'panel',
+          title: `Morning Panels — ${panel}`,
+          desc: `Moderator: ${moderator}`,
+          startGMT1: '2026-02-12T11:00:00+01:00',
+          endGMT1: '2026-02-12T12:00:00+01:00',
+          roomKey,
+          moderator,
+        })),
+
+        // Break
+        {
+          id: 'd2-break',
+          day: 'day2',
+          type: 'break',
+          title: 'Break',
+          desc: 'Break before afternoon panels.',
+          startGMT1: '2026-02-12T12:00:00+01:00',
+          endGMT1: '2026-02-12T13:00:00+01:00',
+          roomKey: 'main',
+          moderator: '—',
+          noJoin: true,
+        },
+
+        // Afternoon Panels 13:00–14:00 (Panels 13–17)
+        ...[
+          [
+            'custom',
+            'Panel 13',
+            'Mrs Nadjia Yahiaoui',
+            'https://meet.google.com/pne-eyrp-svh',
+          ],
+          ['p14', 'Panel 14', 'Dr. Nassima Hamza Cherif', null],
+          ['p15', 'Panel 15', 'Amina Boumediene', null],
+          ['p16', 'Panel 16', 'Prof Assia Benettayeb', null],
+          ['p17', 'Panel 17', 'Dr Amira Benabdelkader', null],
+        ].map(([roomKey, panel, moderator, customUrl], i) => ({
+          id: `d2-panels-13-${i + 1}`,
+          day: 'day2',
+          type: 'panel',
+          title: `Afternoon Panels — ${panel}`,
+          desc: `Moderator: ${moderator}`,
+          startGMT1: '2026-02-12T13:00:00+01:00',
+          endGMT1: '2026-02-12T14:00:00+01:00',
+          roomKey,
+          moderator,
+          customUrl: customUrl || undefined,
+        })),
+
+        // Panels 18–22 14:00–15:00
+        ...[
+          ['p18', 'Panel 18', 'Prof. Nouria Messaoudi'],
+          ['p19', 'Panel 19', 'Dr. Iman Dib'],
+          ['p20', 'Panel 20', 'Dr Nadjet Khenioui'],
+          ['p21', 'Panel 21', 'Mrs. Maureen Rooney'],
+          ['p22', 'Panel 22', 'Dr. Zineb Yousfi'],
+        ].map(([roomKey, panel, moderator], i) => ({
+          id: `d2-panels-14-${i + 1}`,
+          day: 'day2',
+          type: 'panel',
+          title: `Afternoon Panels — ${panel}`,
+          desc: `Moderator: ${moderator}`,
+          startGMT1: '2026-02-12T14:00:00+01:00',
+          endGMT1: '2026-02-12T15:00:00+01:00',
+          roomKey,
+          moderator,
+        })),
+
+        // Closing
+        {
+          id: 'd2-closing',
+          day: 'day2',
+          type: 'closing',
+          title: 'Closing Session',
+          desc: 'Closing session.',
+          startGMT1: '2026-02-12T15:00:00+01:00',
+          endGMT1: '2026-02-12T15:30:00+01:00',
+          roomKey: 'main',
+          moderator: '—',
+        },
+      ];
+
+      const TRACKS = [
+        {
+          title: 'Track 1',
+          desc: 'Second language writing: theory, research, teaching, and assessment.',
+        },
+        {
+          title: 'Track 2',
+          desc: 'Professional development in teaching second language writing.',
+        },
+        {
+          title: 'Track 3',
+          desc: 'Second language writing in interdisciplinary research.',
+        },
+        {
+          title: 'Track 4',
+          desc: 'Professionalization of second language writing teachers.',
+        },
+        {
+          title: 'Track 5',
+          desc: 'Second language research writing: backward and forward.',
+        },
+        {
+          title: 'Track 6',
+          desc: 'Second language writing and generative AI.',
+        },
+      ];
+
+      // ✅ Keynotes with pictures — UPDATED (includes Prof. Ahmed Bacher)
+      // Put the images in /assets/ with the exact filenames below.
+      const KEYNOTES = [
+        {
+          name: 'Dr. Tara Keenan',
+          aff: 'University of Bristol, UK',
+          note: '',
+          img: 'assets/keynote-tara-keenan.jpg',
+        },
+        {
+          name: 'Prof. Touria Drid',
+          aff: 'University of Salford, UK',
+          note: '',
+          img: 'assets/keynote-touria-drid.jpg',
+        },
+        {
+          name: 'Dr. Abu Saleh Mohammad Rafi',
+          aff: 'University of Lisbon, Portugal',
+          note: '',
+          img: 'assets/keynote-abu-saleh-mohammad-rafi.jpg',
+        },
+        {
+          name: 'Mr. Laurence Cleary',
+          aff: 'University of Granada, Spain',
+          note: '',
+          img: 'assets/keynote-laurence-cleary.jpg',
+        },
+        {
+          name: 'Dr. Kamal Belmihoub',
+          aff: 'University of Oran 2, Algeria',
+          note: '',
+          img: 'assets/keynote-kamal-belmihoub.jpg',
+        },
+        {
+          name: 'Prof. Irene Verde Peleato',
+          aff: 'University of Granada, Spain',
+          note: '',
+          img: 'assets/keynote-irene-verde-peleato.jpg',
+        },
+        {
+          name: 'Prof. Ahmed Bacher',
+          aff: 'University of Biskra, Algeria',
+          note: '',
+          img: 'assets/keynote-ahmed-bacher.jpg',
+        },
+      ];
+
+      const COMMITTEES = {
+        scientific: [
+          'President: Dr. Fatima Zohra Adder (University of Tlemcen, Algeria).',
+          'Members: (Add full list if you want it displayed here.)',
+        ],
+        organising: [
+          'President: Yassamina Abdat (University of Tlemcen, Algeria).',
+          'Members: (Add full list if you want it displayed here.)',
+        ],
+      };
+
+      // ✅ Curated YouTube help videos
+      const VIDEO_HELP = [
+        {
+          title: 'How to Join a Google Meet (attendees)',
+          category: 'Getting started',
+          notes: 'Join from a link + key buttons before joining.',
+          youtubeId: '_ftEhUczkII',
+        },
+        {
+          title: 'Google Meet Basics (controls & features)',
+          category: 'Getting started',
+          notes: 'Mute, camera, chat, layouts, and more.',
+          youtubeId: 'yZMGOrOBMY0',
+        },
+        {
+          title: 'How to Present / Share Screen in Google Meet',
+          category: 'Screen sharing',
+          notes: 'Tab vs window vs entire screen; best practices.',
+          youtubeId: '4KjrFSFQr5Q',
+        },
+        {
+          title: 'Join Google Meet on Mobile (Android/iOS)',
+          category: 'Mobile',
+          notes: 'Useful for phone/tablet participants.',
+          youtubeId: 'L46JudR9kdk',
+        },
+        {
+          title: 'Fix Microphone Not Working in Google Meet',
+          category: 'Audio',
+          notes: 'Permissions + selecting correct microphone.',
+          youtubeId: 'EYgou618fD8',
+        },
+        {
+          title: 'Fix Camera Not Working in Google Meet',
+          category: 'Camera',
+          notes: 'Permissions + closing other apps using camera.',
+          youtubeId: 'P3qg9NPe5Do',
+        },
+      ];
+
+      /***********************
+       * Utilities
+       ***********************/
+      const $ = (s, r = document) => r.querySelector(s);
+      const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+      function showToast(msg) {
+        const t = $('#toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => t.classList.remove('show'), 1700);
+      }
+
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast('Copied');
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+          showToast('Copied');
+        }
+      }
+
+      function fmtLocalRange(startISO, endISO) {
+        const start = new Date(startISO);
+        const end = new Date(endISO);
+        const optsTime = { hour: '2-digit', minute: '2-digit' };
+        const optsDate = {
+          weekday: 'short',
+          year: 'numeric',
+          month: 'short',
+          day: '2-digit',
+        };
+        return {
+          time: `${start.toLocaleTimeString(undefined, optsTime)}–${end.toLocaleTimeString(undefined, optsTime)}`,
+          date: start.toLocaleDateString(undefined, optsDate),
+        };
+      }
+
+      function shortMeet(url) {
+        try {
+          const u = new URL(url);
+          return u.hostname + u.pathname;
+        } catch {
+          return url;
+        }
+      }
+
+      function getSessionUrl(s) {
+        if (s.noJoin) return '';
+        if (s.roomKey === 'custom' && s.customUrl) return s.customUrl;
+        return ROOMS[s.roomKey]?.url || ROOMS.main.url;
+      }
+
+      function sessionDayLabel(day) {
+        return day === 'day1' ? 'Day 1 · 11 Feb 2026' : 'Day 2 · 12 Feb 2026';
+      }
+
+      function typeLabel(type) {
+        return (
+          {
+            opening: 'Opening',
+            keynote: 'Keynote',
+            panel: 'Panel',
+            break: 'Break',
+            closing: 'Closing',
+          }[type] || 'Session'
+        );
+      }
+
+      function isLive(s, now = new Date()) {
+        const start = new Date(s.startGMT1);
+        const end = new Date(s.endGMT1);
+        return now >= start && now < end;
+      }
+
+      function isNext(s, now = new Date()) {
+        const start = new Date(s.startGMT1);
+        return start > now;
+      }
+
+      function getLiveAndNext(now = new Date()) {
+        const sorted = [...SESSIONS].sort(
+          (a, b) => new Date(a.startGMT1) - new Date(b.startGMT1),
+        );
+        const live = sorted.find((s) => !s.noJoin && isLive(s, now));
+        const next = sorted.find((s) => !s.noJoin && isNext(s, now));
+        return { live, next };
+      }
+
+      /***********************
+       * Renderers
+       ***********************/
+      function renderRooms() {
+        const root = $('#roomList');
+        root.innerHTML = '';
+
+        const order = [
+          'main',
+          'help',
+          'p1',
+          'p2',
+          'p3',
+          'p4',
+          'p5',
+          'p6',
+          'p7',
+          'p8',
+          'p9',
+          'p10',
+          'p11',
+          'p12',
+          'p14',
+          'p15',
+          'p16',
+          'p17',
+          'p18',
+          'p19',
+          'p20',
+          'p21',
+          'p22',
+        ].filter((k) => ROOMS[k]);
+
+        order.forEach((k) => {
+          const r = ROOMS[k];
+          const div = document.createElement('div');
+          div.className = 'room';
+          const btnClass =
+            k === 'main' ? 'primary' : k === 'help' ? 'good' : 'ghost';
+          div.innerHTML = `
+          <div>
+            <h3>${r.name}</h3>
+            <div class="meta">${r.purpose}</div>
+            <div class="meta mono" style="margin-top:4px">${shortMeet(r.url)}</div>
+          </div>
+          <div class="actions">
+            <a class="btn ${btnClass}" href="${r.url}" target="_blank" rel="noopener">Join</a>
+            <span class="chip" data-copy-room="${k}">Copy</span>
+          </div>
+        `;
+          root.appendChild(div);
+        });
+
+        $$('[data-copy-room]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const k = el.getAttribute('data-copy-room');
+            copyText(ROOMS[k].url);
+          });
+        });
+      }
+
+      function renderTracks() {
+        const root = $('#tracksList');
+        root.innerHTML = '';
+        TRACKS.forEach((t) => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `<div class="title">${t.title}</div><div class="desc">${t.desc}</div>`;
+          root.appendChild(div);
+        });
+      }
+
+      function renderKeynotes() {
+        const root = $('#keynoteList');
+        root.innerHTML = '';
+
+        KEYNOTES.forEach((k) => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+          <div class="keynote">
+            <div class="keynote-left">
+              <img class="keynote-photo" src="${k.img || ''}" alt="${k.name || 'Keynote speaker'}" loading="lazy" />
+              <div style="min-width:0">
+                <div class="keynote-name">${k.name}</div>
+                <div class="keynote-aff">${k.aff || ''}</div>
+                ${k.note ? `<div class="keynote-note">${k.note}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+          root.appendChild(div);
+        });
+      }
+
+      function renderCommittees() {
+        $('#scientificCommittee').innerHTML = `
+        <div class="muted2">${COMMITTEES.scientific[0]}</div>
+        <div class="muted" style="margin-top:8px">${COMMITTEES.scientific[1]}</div>
+      `;
+        $('#organisingCommittee').innerHTML = `
+        <div class="muted2">${COMMITTEES.organising[0]}</div>
+        <div class="muted" style="margin-top:8px">${COMMITTEES.organising[1]}</div>
+      `;
+      }
+
+      function applyFilters() {
+        const q = ($('#q').value || '').trim().toLowerCase();
+        const day = $('#dayFilter').value;
+        const type = $('#typeFilter').value;
+
+        const filtered = SESSIONS.filter((s) => {
+          const okDay = day === 'all' || s.day === day;
+          const okType = type === 'all' || s.type === type;
+          const hay =
+            `${s.title} ${s.desc || ''} ${s.moderator || ''} ${sessionDayLabel(s.day)}`.toLowerCase();
+          const okQ = !q || hay.includes(q);
+          return okDay && okType && okQ;
+        }).sort((a, b) => new Date(a.startGMT1) - new Date(b.startGMT1));
+
+        renderSchedule(filtered);
+      }
+
+      function renderSchedule(list) {
+        const root = $('#schedule');
+        root.innerHTML = '';
+
+        const now = new Date();
+        const { live, next } = getLiveAndNext(now);
+
+        list.forEach((s) => {
+          const { time, date } = fmtLocalRange(s.startGMT1, s.endGMT1);
+          const liveNow = live && s.id === live.id;
+          const url = getSessionUrl(s);
+
+          const slot = document.createElement('div');
+          slot.className = 'slot' + (liveNow ? ' now' : '');
+          slot.innerHTML = `
+          <div class="timebox">
+            <div class="t">${time}</div>
+            <div class="d">${date}</div>
+            <div class="d"><span class="tag">${sessionDayLabel(s.day)}</span></div>
+          </div>
+
+          <div>
+            <h4>${s.title}</h4>
+            <p>${s.desc || ''}</p>
+
+            <div class="row">
+              <span class="tag">${typeLabel(s.type)}</span>
+              ${s.moderator && s.moderator !== '—' ? `<span class="tag">Moderator: ${s.moderator}</span>` : ''}
+              ${liveNow ? `<span class="tag" style="border-color: rgba(34,197,94,.35); color: var(--text)">● Live now</span>` : ''}
+              ${next && s.id === next.id ? `<span class="tag" style="border-color: rgba(245,158,11,.35); color: var(--text)">Next</span>` : ''}
+              ${s.noJoin ? `<span class="tag" style="border-color: rgba(148,163,184,.35); color: var(--text)">No room</span>` : ''}
+            </div>
+
+            <div class="row">
+              ${s.noJoin ? '' : `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Join room</a>`}
+              ${s.noJoin ? '' : `<span class="chip" data-copy-url="${s.id}">Copy link</span>`}
+            </div>
+
+            ${s.noJoin ? '' : `<p class="muted tiny" style="margin:10px 0 0">Room: <span class="mono">${shortMeet(url)}</span></p>`}
+          </div>
+        `;
+          root.appendChild(slot);
+        });
+
+        $$('[data-copy-url]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const id = el.getAttribute('data-copy-url');
+            const s = SESSIONS.find((x) => x.id === id);
+            copyText(getSessionUrl(s));
+          });
+        });
+      }
+
+      /***********************
+       * Video Help (YouTube)
+       ***********************/
+      function ytEmbedUrl(id) {
+        return `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`;
+      }
+
+      function initVideoHelp() {
+        const grid = $('#videoGrid');
+        const featured = $('#featuredVideo');
+        const q = $('#videoSearch');
+        const cat = $('#videoCategory');
+
+        if (!grid || !featured || !q || !cat) return;
+
+        const categories = Array.from(
+          new Set(VIDEO_HELP.map((v) => v.category)),
+        ).sort();
+        categories.forEach((c) => {
+          const opt = document.createElement('option');
+          opt.value = c;
+          opt.textContent = c;
+          cat.appendChild(opt);
+        });
+
+        if (VIDEO_HELP.length) {
+          featured.src = ytEmbedUrl(VIDEO_HELP[0].youtubeId);
+        }
+
+        function render() {
+          const term = (q.value || '').trim().toLowerCase();
+          const chosen = cat.value;
+
+          const items = VIDEO_HELP.filter((v) => {
+            const okCat = chosen === 'all' || v.category === chosen;
+            const hay = `${v.title} ${v.notes} ${v.category}`.toLowerCase();
+            const okQ = !term || hay.includes(term);
+            return okCat && okQ;
+          });
+
+          grid.innerHTML = '';
+
+          if (!items.length) {
+            const empty = document.createElement('div');
+            empty.className = 'item';
+            empty.innerHTML = `<div class="title">No videos found</div><div class="desc muted">Try a different keyword or topic.</div>`;
+            grid.appendChild(empty);
+            return;
+          }
+
+          items.forEach((v) => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+            <div class="video-left">
+              <div class="video-title">${v.title}</div>
+              <div class="video-meta">${v.notes}</div>
+              <div class="video-tags">
+                <span class="tag">${v.category}</span>
+              </div>
+            </div>
+            <div class="video-actions">
+              <button class="btn primary" type="button">Watch</button>
+              <span class="chip" title="Copy YouTube link">Copy link</span>
+            </div>
+          `;
+
+            const watchBtn = card.querySelector('button');
+            const copyChip = card.querySelector('.chip');
+
+            watchBtn.addEventListener('click', () => {
+              featured.src = ytEmbedUrl(v.youtubeId);
+              $('#video-help').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            });
+
+            copyChip.addEventListener('click', async () => {
+              const url = `https://youtu.be/${v.youtubeId}`;
+              await copyText(url);
+            });
+
+            grid.appendChild(card);
+          });
+        }
+
+        q.addEventListener('input', render);
+        cat.addEventListener('change', render);
+        render();
+      }
+
+      /***********************
+       * 1-page Quick Help PDF
+       ***********************/
+      function wrapText(doc, text, x, y, maxWidth, lineHeight) {
+        const words = String(text).split(/\s+/);
+        let line = '';
+        for (let i = 0; i < words.length; i++) {
+          const test = (line ? line + ' ' : '') + words[i];
+          const w = doc.getTextWidth(test);
+          if (w > maxWidth && line) {
+            doc.text(line, x, y);
+            y += lineHeight;
+            line = words[i];
+          } else {
+            line = test;
+          }
+        }
+        if (line) {
+          doc.text(line, x, y);
+          y += lineHeight;
+        }
+        return y;
+      }
+
+      function downloadQuickHelpPDF() {
+        const { jsPDF } = window.jspdf || {};
+        if (!jsPDF) {
+          alert(
+            'PDF library did not load. Please check your internet connection and try again.',
+          );
+          return;
+        }
+
+        const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+        const W = 210,
+          H = 297;
+        const margin = 16;
+        let y = 18;
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        doc.text('Google Meet Quick Help (1 page)', margin, y);
+        y += 8;
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(11);
+        doc.setTextColor(60);
+        doc.text('Top 6 problems & fixes for participants', margin, y);
+        y += 8;
+
+        doc.setDrawColor(210);
+        doc.line(margin, y, W - margin, y);
+        y += 8;
+
+        doc.setTextColor(20);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(11.8);
+        doc.text('Conference:', margin, y);
+        doc.setFont('helvetica', 'normal');
+        doc.text(
+          'The First Online International Conference on Second Language Writing',
+          margin + 24,
+          y,
+        );
+        y += 9;
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10.8);
+
+        const items = [
+          {
+            t: '1) Microphone muted / no one hears me',
+            b: [
+              'Unmute in Meet (mic icon).',
+              'In Chrome: lock icon → Site settings → Microphone → Allow.',
+              'Meet: ⋮ → Settings → Audio → select the correct microphone.',
+              'Disconnect Bluetooth headsets if audio routes to the wrong device.',
+            ],
+          },
+          {
+            t: '2) Camera blocked / black screen',
+            b: [
+              'Lock icon → Site settings → Camera → Allow.',
+              'Close other apps using the camera (Zoom/Teams/WhatsApp Desktop).',
+              'Meet: ⋮ → Settings → Video → choose the correct camera.',
+            ],
+          },
+          {
+            t: '3) Echo / feedback',
+            b: [
+              'If using two devices, keep audio ON in only one device.',
+              'Use headphones to prevent speaker sound re-entering the mic.',
+              'Lower speaker volume if needed.',
+            ],
+          },
+          {
+            t: '4) Can’t present a tab / screen share not working',
+            b: [
+              'Use Chrome (recommended).',
+              'Click “Present now” → choose “A Chrome tab” (best for sharing tab audio).',
+              'Refresh and rejoin if the button is missing.',
+            ],
+          },
+          {
+            t: '5) “Ask to join” / can’t enter',
+            b: [
+              'Wait for the host/co-host to admit you (they may admit in batches).',
+              'Rejoin once if you think you clicked the wrong link.',
+              'Without a Google account, host admission is required.',
+            ],
+          },
+          {
+            t: '6) Low bandwidth (freezing / robotic audio)',
+            b: [
+              'Turn off camera temporarily to stabilise audio.',
+              'Close other tabs/downloads; move closer to Wi-Fi or use wired internet.',
+              'On mobile, switch network or use a stronger Wi-Fi.',
+            ],
+          },
+        ];
+
+        const maxWidth = W - margin * 2;
+
+        for (const it of items) {
+          doc.setFont('helvetica', 'bold');
+          doc.setTextColor(0);
+          doc.setFontSize(11.7);
+          y = wrapText(doc, it.t, margin, y, maxWidth, 5.1);
+
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(10.6);
+          doc.setTextColor(40);
+
+          for (const bullet of it.b) {
+            y = wrapText(doc, '• ' + bullet, margin + 2, y, maxWidth - 2, 4.9);
+          }
+          y += 2.8;
+        }
+
+        doc.setTextColor(90);
+        doc.setFontSize(9.5);
+        doc.text(
+          'If issues persist, open the Help Desk room or contact conference support.',
+          margin,
+          H - 14,
+        );
+
+        doc.save('Google-Meet-Quick-Help.pdf');
+      }
+
+      /***********************
+       * Live/Next bar updater
+       ***********************/
+      function updateLiveBar() {
+        const now = new Date();
+        const { live, next } = getLiveAndNext(now);
+
+        const clock = now.toLocaleString(undefined, {
+          weekday: 'short',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+        $('#localClock').textContent = clock;
+
+        let label = 'No session live right now';
+        let joinUrl = ROOMS.main.url;
+
+        if (live) {
+          label = `${typeLabel(live.type)} · ${live.title}`;
+          joinUrl = getSessionUrl(live);
+        } else if (next) {
+          const r = fmtLocalRange(next.startGMT1, next.endGMT1);
+          label = `Next: ${typeLabel(next.type)} · ${next.title} (${r.time})`;
+          joinUrl = getSessionUrl(next);
+        }
+
+        $('#liveLabel').textContent = label;
+        $('#btnJoinLive').href = joinUrl;
+      }
+
+      /***********************
+       * Highlight active menu item on scroll
+       ***********************/
+      function initActiveMenu() {
+        const links = $$('#menu a');
+        const sections = links
+          .map((a) => document.querySelector(a.getAttribute('href')))
+          .filter(Boolean);
+
+        const obs = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((e) => e.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (!visible) return;
+
+            links.forEach((a) => a.classList.remove('active'));
+            const id = '#' + visible.target.id;
+            const active = links.find((a) => a.getAttribute('href') === id);
+            if (active) active.classList.add('active');
+          },
+          { root: null, threshold: [0.18, 0.28, 0.38, 0.48] },
+        );
+
+        sections.forEach((s) => obs.observe(s));
+      }
+
+      /***********************
+       * Init + events
+       ***********************/
+      (function init() {
+        const tz =
+          Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local time';
+        $('#tzLabel').textContent = tz;
+        $('#tzValue').textContent = tz;
+        $('#tzKpi').textContent = tz;
+
+        $('#year').textContent = new Date().getFullYear();
+
+        // Main hall links
+        $('#btnJoinMain').href = ROOMS.main.url;
+        $('#btnJoinLive').href = ROOMS.main.url;
+        $('#mainHallShort').textContent = shortMeet(ROOMS.main.url);
+
+        // Help desk buttons
+        $('#btnJoinHelpDesk').href = ROOMS.help.url;
+        $('#btnCopyHelpDesk').addEventListener('click', () =>
+          copyText(ROOMS.help.url),
+        );
+
+        // render
+        renderRooms();
+        renderTracks();
+        renderKeynotes();
+        renderCommittees();
+        applyFilters();
+        initVideoHelp();
+        initActiveMenu();
+
+        // filters
+        $('#q').addEventListener('input', applyFilters);
+        $('#dayFilter').addEventListener('change', applyFilters);
+        $('#typeFilter').addEventListener('change', applyFilters);
+
+        // top bar / buttons
+        $('#btnCopyHub').addEventListener('click', () =>
+          copyText(location.href),
+        );
+        $('#btnPrint').addEventListener('click', () => window.print());
+
+        // quick help PDF
+        $('#btnDownloadPDF').addEventListener('click', (e) => {
+          e.preventDefault();
+          downloadQuickHelpPDF();
+        });
+
+        // live bar loop
+        updateLiveBar();
+        setInterval(updateLiveBar, 1000 * 10);
+      })();
+    </script>
+  </body>
+</html>
