@@ -26,6 +26,13 @@
         --warn: #f59e0b;
         --danger: #ef4444;
 
+        /* ✅ Session type colours (blocks + pills) */
+        --type-opening: #60a5fa; /* blue */
+        --type-keynote: #22c55e; /* green */
+        --type-panel: #a855f7; /* purple */
+        --type-break: #f59e0b; /* orange */
+        --type-closing: #ef4444; /* red */
+
         --shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
         --radius: 18px;
         --radius2: 14px;
@@ -554,6 +561,7 @@
         display: grid;
         gap: 10px;
       }
+
       .slot {
         padding: 12px;
         border-radius: 14px;
@@ -569,6 +577,29 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* ✅ COLOURED BLOCKS BY TYPE */
+      .slot.type-opening {
+        border-color: rgba(96, 165, 250, 0.45);
+        background: rgba(96, 165, 250, 0.09);
+      }
+      .slot.type-keynote {
+        border-color: rgba(34, 197, 94, 0.45);
+        background: rgba(34, 197, 94, 0.09);
+      }
+      .slot.type-panel {
+        border-color: rgba(168, 85, 247, 0.45);
+        background: rgba(168, 85, 247, 0.09);
+      }
+      .slot.type-break {
+        border-color: rgba(245, 158, 11, 0.45);
+        background: rgba(245, 158, 11, 0.09);
+      }
+      .slot.type-closing {
+        border-color: rgba(239, 68, 68, 0.45);
+        background: rgba(239, 68, 68, 0.09);
+      }
+
       .timebox {
         padding: 10px;
         border-radius: 12px;
@@ -612,6 +643,33 @@
         font-size: 12px;
         color: var(--muted);
         white-space: nowrap;
+      }
+
+      /* ✅ COLOURED TYPE PILLS TO MATCH BLOCKS */
+      .tag.tag-opening {
+        color: var(--type-opening);
+        border-color: rgba(96, 165, 250, 0.45);
+        background: rgba(96, 165, 250, 0.13);
+      }
+      .tag.tag-keynote {
+        color: var(--type-keynote);
+        border-color: rgba(34, 197, 94, 0.45);
+        background: rgba(34, 197, 94, 0.13);
+      }
+      .tag.tag-panel {
+        color: var(--type-panel);
+        border-color: rgba(168, 85, 247, 0.45);
+        background: rgba(168, 85, 247, 0.13);
+      }
+      .tag.tag-break {
+        color: var(--type-break);
+        border-color: rgba(245, 158, 11, 0.45);
+        background: rgba(245, 158, 11, 0.13);
+      }
+      .tag.tag-closing {
+        color: var(--type-closing);
+        border-color: rgba(239, 68, 68, 0.45);
+        background: rgba(239, 68, 68, 0.13);
       }
 
       .now {
@@ -781,13 +839,17 @@
         .hd {
           background: #f5f5f5;
         }
+
+        /* keep printable but simple */
         .slot,
         .room,
         .item,
         .kpi,
         .video-card {
-          background: #fff;
+          background: #fff !important;
+          border: 1px solid #ccc !important;
         }
+
         a {
           color: #000;
         }
@@ -1903,7 +1965,9 @@
           const url = getSessionUrl(s);
 
           const slot = document.createElement('div');
-          slot.className = 'slot' + (liveNow ? ' now' : '');
+          /* ✅ Add type class so the whole block is coloured by type */
+          slot.className = `slot type-${s.type}` + (liveNow ? ' now' : '');
+
           slot.innerHTML = `
           <div class="timebox">
             <div class="t">${time}</div>
@@ -1916,7 +1980,9 @@
             <p>${s.desc || ''}</p>
 
             <div class="row">
-              <span class="tag">${typeLabel(s.type)}</span>
+              <!-- ✅ Type pill matches the block colour -->
+              <span class="tag tag-${s.type}">${typeLabel(s.type)}</span>
+
               ${s.moderator && s.moderator !== '—' ? `<span class="tag">Moderator: ${s.moderator}</span>` : ''}
               ${liveNow ? `<span class="tag" style="border-color: rgba(34,197,94,.35); color: var(--text)">● Live now</span>` : ''}
               ${next && s.id === next.id ? `<span class="tag" style="border-color: rgba(245,158,11,.35); color: var(--text)">Next</span>` : ''}
@@ -2299,4 +2365,3 @@
     </script>
   </body>
 </html>
-
