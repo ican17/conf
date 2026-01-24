@@ -26,13 +26,6 @@
         --warn: #f59e0b;
         --danger: #ef4444;
 
-        /* ✅ Session type colours (blocks + pills) */
-        --type-opening: #60a5fa; /* blue */
-        --type-keynote: #22c55e; /* green */
-        --type-panel: #a855f7; /* purple */
-        --type-break: #f59e0b; /* orange */
-        --type-closing: #ef4444; /* red */
-
         --shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
         --radius: 18px;
         --radius2: 14px;
@@ -43,6 +36,24 @@
         --sans:
           ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
           'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+
+        /* =========================================================
+           ✅ Type colour system (blocks + pills)
+           ========================================================= */
+        --opening-bg: rgba(96, 165, 250, 0.12);
+        --opening-br: rgba(96, 165, 250, 0.35);
+
+        --keynote-bg: rgba(34, 197, 94, 0.12);
+        --keynote-br: rgba(34, 197, 94, 0.35);
+
+        --panel-bg: rgba(168, 85, 247, 0.12);
+        --panel-br: rgba(168, 85, 247, 0.35);
+
+        --break-bg: rgba(148, 163, 184, 0.12);
+        --break-br: rgba(148, 163, 184, 0.35);
+
+        --closing-bg: rgba(245, 158, 11, 0.12);
+        --closing-br: rgba(245, 158, 11, 0.35);
       }
 
       * {
@@ -90,32 +101,106 @@
         padding: 18px 18px 70px;
       }
 
-      /* TOP NAV (more visible) */
+      /* BRAND HEADER (logos + tagline) */
+      .brand-header {
+        margin: 18px 0 8px;
+      }
+
+      .brand-header-inner {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+
+        padding: 16px 18px;
+        border-radius: 18px;
+
+        background: linear-gradient(
+          180deg,
+          rgba(96, 165, 250, 0.14),
+          rgba(13, 20, 38, 0.75)
+        );
+
+        border: 1px solid rgba(96, 165, 250, 0.28);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .brand-header .logos {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-header .logo {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-header .brand-text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .brand-header .brand-title {
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: -0.01em;
+      }
+
+      .brand-header .brand-sub {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 720px) {
+        .brand-header-inner {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* TOP NAV – redesigned */
       .topnav {
         position: sticky;
         top: 10px;
         z-index: 80;
-        margin: 10px 0 14px;
+        margin: 12px 0 18px;
       }
+
       .topnav-inner {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
-        padding: 12px 12px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(7, 11, 21, 0.7);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        gap: 14px;
+
+        padding: 14px 18px;
+        border-radius: 16px;
+
+        background: linear-gradient(
+          180deg,
+          rgba(13, 20, 38, 0.85),
+          rgba(7, 11, 21, 0.75)
+        );
+
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+
+        /* ✅ allow wrapping instead of horizontal scrolling */
+        flex-wrap: wrap;
+        overflow: hidden; /* no scrollbar */
       }
+
       .brand {
         display: flex;
         align-items: center;
         gap: 10px;
-        min-width: 220px;
+
+        /* ✅ don't force width; let it shrink */
+        min-width: 0;
+        flex: 0 1 auto;
       }
+
       .logos {
         display: flex;
         align-items: center;
@@ -161,7 +246,11 @@
         gap: 10px;
         align-items: center;
         justify-content: flex-end;
+
+        /* ✅ allow it to take remaining space and wrap items */
+        flex: 1 1 520px;
       }
+
       .menu a {
         padding: 10px 12px;
         border-radius: 999px;
@@ -343,7 +432,7 @@
       /* Sticky quick bar */
       .sticky {
         position: sticky;
-        top: 92px; /* sits below top nav */
+        top: 92px;
         z-index: 60;
         margin-top: 14px;
       }
@@ -557,11 +646,13 @@
       select {
         max-width: 260px;
       }
+
       .schedule {
         display: grid;
         gap: 10px;
       }
 
+      /* ✅ Session blocks (base) */
       .slot {
         padding: 12px;
         border-radius: 14px;
@@ -578,26 +669,46 @@
         }
       }
 
-      /* ✅ COLOURED BLOCKS BY TYPE */
+      /* ✅ Session blocks by type */
       .slot.type-opening {
-        border-color: rgba(96, 165, 250, 0.45);
-        background: rgba(96, 165, 250, 0.09);
+        border-color: var(--opening-br);
+        background: linear-gradient(
+          180deg,
+          var(--opening-bg),
+          rgba(11, 18, 34, 0.45)
+        );
       }
       .slot.type-keynote {
-        border-color: rgba(34, 197, 94, 0.45);
-        background: rgba(34, 197, 94, 0.09);
+        border-color: var(--keynote-br);
+        background: linear-gradient(
+          180deg,
+          var(--keynote-bg),
+          rgba(11, 18, 34, 0.45)
+        );
       }
       .slot.type-panel {
-        border-color: rgba(168, 85, 247, 0.45);
-        background: rgba(168, 85, 247, 0.09);
+        border-color: var(--panel-br);
+        background: linear-gradient(
+          180deg,
+          var(--panel-bg),
+          rgba(11, 18, 34, 0.45)
+        );
       }
       .slot.type-break {
-        border-color: rgba(245, 158, 11, 0.45);
-        background: rgba(245, 158, 11, 0.09);
+        border-color: var(--break-br);
+        background: linear-gradient(
+          180deg,
+          var(--break-bg),
+          rgba(11, 18, 34, 0.45)
+        );
       }
       .slot.type-closing {
-        border-color: rgba(239, 68, 68, 0.45);
-        background: rgba(239, 68, 68, 0.09);
+        border-color: var(--closing-br);
+        background: linear-gradient(
+          180deg,
+          var(--closing-bg),
+          rgba(11, 18, 34, 0.45)
+        );
       }
 
       .timebox {
@@ -632,6 +743,7 @@
         align-items: center;
       }
 
+      /* ✅ Pills / tags */
       .tag {
         display: inline-flex;
         align-items: center;
@@ -645,36 +757,35 @@
         white-space: nowrap;
       }
 
-      /* ✅ COLOURED TYPE PILLS TO MATCH BLOCKS */
-      .tag.tag-opening {
-        color: var(--type-opening);
-        border-color: rgba(96, 165, 250, 0.45);
-        background: rgba(96, 165, 250, 0.13);
+      /* ✅ Type tag pills matching block colours */
+      .tag.type-opening {
+        border-color: var(--opening-br);
+        background: var(--opening-bg);
+        color: var(--text);
       }
-      .tag.tag-keynote {
-        color: var(--type-keynote);
-        border-color: rgba(34, 197, 94, 0.45);
-        background: rgba(34, 197, 94, 0.13);
+      .tag.type-keynote {
+        border-color: var(--keynote-br);
+        background: var(--keynote-bg);
+        color: var(--text);
       }
-      .tag.tag-panel {
-        color: var(--type-panel);
-        border-color: rgba(168, 85, 247, 0.45);
-        background: rgba(168, 85, 247, 0.13);
+      .tag.type-panel {
+        border-color: var(--panel-br);
+        background: var(--panel-bg);
+        color: var(--text);
       }
-      .tag.tag-break {
-        color: var(--type-break);
-        border-color: rgba(245, 158, 11, 0.45);
-        background: rgba(245, 158, 11, 0.13);
+      .tag.type-break {
+        border-color: var(--break-br);
+        background: var(--break-bg);
+        color: var(--text);
       }
-      .tag.tag-closing {
-        color: var(--type-closing);
-        border-color: rgba(239, 68, 68, 0.45);
-        background: rgba(239, 68, 68, 0.13);
+      .tag.type-closing {
+        border-color: var(--closing-br);
+        background: var(--closing-bg);
+        color: var(--text);
       }
 
       .now {
-        border-color: rgba(34, 197, 94, 0.35);
-        background: rgba(34, 197, 94, 0.08);
+        outline: 2px solid rgba(34, 197, 94, 0.25);
       }
 
       /* Tracks + lists */
@@ -839,17 +950,13 @@
         .hd {
           background: #f5f5f5;
         }
-
-        /* keep printable but simple */
         .slot,
         .room,
         .item,
         .kpi,
         .video-card {
           background: #fff !important;
-          border: 1px solid #ccc !important;
         }
-
         a {
           color: #000;
         }
@@ -865,44 +972,45 @@
 
   <body>
     <div class="container">
-      <!-- More visible menu + logos -->
-      <div class="topnav" aria-label="Primary navigation">
-        <div class="topnav-inner">
-          <div class="brand">
-            <div class="logos" aria-hidden="false">
-              <!-- ✅ Replace with your real files/URLs -->
-              <img
-                class="logo"
-                id="univLogo"
-                src="assets/university-logo.png"
-                alt="University of Tlemcen logo"
-                loading="lazy"
-              />
-              <img
-                class="logo"
-                id="labLogo"
-                src="assets/flpatp-logo.png"
-                alt="FLPATP Laboratory logo"
-                loading="lazy"
-              />
-            </div>
-            <div class="brand-text">
-              <div class="brand-title">Conference Hub</div>
-              <div class="brand-sub">
-                University of Tlemcen · FLPATP Laboratory · 11–12 Feb 2026
-              </div>
-            </div>
+      <!-- Menu + logos -->
+      <!-- BRAND HEADER -->
+      <div class="brand-header">
+        <div class="brand-header-inner">
+          <div class="logos">
+            <img
+              class="logo"
+              src="assets/university-logo.png"
+              alt="University of Tlemcen logo"
+            />
+            <img
+              class="logo"
+              src="assets/flpatp-logo.png"
+              alt="FLPATP Laboratory logo"
+            />
           </div>
 
-          <div class="menu" id="menu">
+          <div class="brand-text">
+            <div class="brand-title">Conference Hub</div>
+            <div class="brand-sub">
+              University of Tlemcen · FLPATP Laboratory · 11–12 Feb 2026
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAVIGATION -->
+      <div class="topnav" aria-label="Primary navigation">
+        <div class="topnav-inner">
+          <nav class="menu" id="menu">
             <a href="#programme">Programme</a>
             <a href="#rooms">Rooms</a>
             <a href="#video-help">Video Help</a>
             <a href="#tracks">Tracks</a>
             <a href="#keynotes">Keynotes</a>
+            <a href="#guest">Guests</a>
             <a href="#committees">Committees</a>
             <a href="#contact">Support</a>
-          </div>
+          </nav>
         </div>
       </div>
 
@@ -1182,6 +1290,21 @@
         </div>
       </section>
 
+      <!-- ✅ Guest Speaker -->
+      <section class="card" id="guest" style="margin-top: 16px">
+        <div class="hd">
+          <h2>Guest Speaker</h2>
+          <span class="muted tiny">Additional invited speaker</span>
+        </div>
+        <div class="bd">
+          <div class="list" id="guestList"></div>
+          <p class="muted tiny" style="margin: 10px 0 0">
+            Tip: Put the guest speaker photo in
+            <span class="mono">/assets/</span> and update the filename below.
+          </p>
+        </div>
+      </section>
+
       <!-- Committees -->
       <section class="card" id="committees" style="margin-top: 16px">
         <div class="hd">
@@ -1378,7 +1501,6 @@
           url: 'https://meet.google.com/vvs-upui-rfr',
         },
 
-        // Optional dedicated help desk (you can point it to a special Meet if you create one)
         help: {
           name: 'Help Desk',
           purpose: 'Live technical support',
@@ -1388,9 +1510,7 @@
 
       // Programme sessions in GMT+1 (Algeria time). Visitors see local times automatically.
       const SESSIONS = [
-        // =======================
-        // DAY 1 (11 Feb 2026)
-        // =======================
+        // DAY 1
         {
           id: 'd1-opening',
           day: 'day1',
@@ -1414,7 +1534,6 @@
           moderator: 'Dr. F.Z. BELKHIR',
         },
 
-        // Morning Panels 11:30–12:30 (parallel)
         ...[
           ['p1', 'Panel 1', 'Dr Manel Mizab'],
           ['p2', 'Panel 2', 'Dr. Adder FZ'],
@@ -1434,7 +1553,6 @@
           moderator,
         })),
 
-        // Break
         {
           id: 'd1-break',
           day: 'day1',
@@ -1448,7 +1566,6 @@
           noJoin: true,
         },
 
-        // Afternoon keynote
         {
           id: 'd1-keynote-afternoon',
           day: 'day1',
@@ -1461,7 +1578,6 @@
           moderator: 'Dr. Wafa Zekri',
         },
 
-        // Afternoon Panels 15:00–16:00 (parallel)
         ...[
           ['p7', 'Panel 7', 'Dr. Yassamina Abdat'],
           ['p8', 'Panel 8', 'Dr Fouzia Bennacer'],
@@ -1481,9 +1597,7 @@
           moderator,
         })),
 
-        // =======================
-        // DAY 2 (12 Feb 2026)
-        // =======================
+        // DAY 2
         {
           id: 'd2-keynote-morning',
           day: 'day2',
@@ -1496,7 +1610,6 @@
           moderator: 'Dr. F.Z. Adder',
         },
 
-        // Morning Panels 10:00–11:00 (parallel)
         ...[
           ['p1', 'Panel 1', 'TBD'],
           ['p2', 'Panel 2', 'Dr. Bekhta Belaid'],
@@ -1516,7 +1629,6 @@
           moderator,
         })),
 
-        // Panels 7–12 11:00–12:00 (parallel)
         ...[
           ['p7', 'Panel 7', 'Dr Imane Berrouba Tani'],
           ['p8', 'Panel 8', 'Ms. Fatma Zohra Hadj Ameur'],
@@ -1536,7 +1648,6 @@
           moderator,
         })),
 
-        // Break
         {
           id: 'd2-break',
           day: 'day2',
@@ -1550,7 +1661,6 @@
           noJoin: true,
         },
 
-        // Afternoon Panels 13:00–14:00 (Panels 13–17)
         ...[
           [
             'custom',
@@ -1575,7 +1685,6 @@
           customUrl: customUrl || undefined,
         })),
 
-        // Panels 18–22 14:00–15:00
         ...[
           ['p18', 'Panel 18', 'Prof. Nouria Messaoudi'],
           ['p19', 'Panel 19', 'Dr. Iman Dib'],
@@ -1594,7 +1703,6 @@
           moderator,
         })),
 
-        // Closing
         {
           id: 'd2-closing',
           day: 'day2',
@@ -1635,8 +1743,7 @@
         },
       ];
 
-      // ✅ Keynotes with pictures — UPDATED (includes Prof. Ahmed Bacher)
-      // Put the images in /assets/ with the exact filenames below.
+      // Keynotes with pictures
       const KEYNOTES = [
         {
           name: 'Dr. Tara Keenan',
@@ -1682,6 +1789,14 @@
         },
       ];
 
+      // ✅ NEW: Guest Speaker (edit this)
+      const GUEST_SPEAKER = {
+        name: 'Guest Speaker Name (edit)',
+        aff: 'Affiliation (edit)',
+        note: '',
+        img: 'assets/guest-speaker.jpg',
+      };
+
       const COMMITTEES = {
         scientific: [
           'President: Dr. Fatima Zohra Adder (University of Tlemcen, Algeria).',
@@ -1693,7 +1808,6 @@
         ],
       };
 
-      // ✅ Curated YouTube help videos
       const VIDEO_HELP = [
         {
           title: 'How to Join a Google Meet (attendees)',
@@ -1904,7 +2018,6 @@
       function renderKeynotes() {
         const root = $('#keynoteList');
         root.innerHTML = '';
-
         KEYNOTES.forEach((k) => {
           const div = document.createElement('div');
           div.className = 'item';
@@ -1922,6 +2035,30 @@
         `;
           root.appendChild(div);
         });
+      }
+
+      // ✅ NEW
+      function renderGuest() {
+        const root = $('#guestList');
+        if (!root) return;
+        root.innerHTML = '';
+
+        const k = GUEST_SPEAKER;
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          <div class="keynote">
+            <div class="keynote-left">
+              <img class="keynote-photo" src="${k.img || ''}" alt="${k.name || 'Guest speaker'}" loading="lazy" />
+              <div style="min-width:0">
+                <div class="keynote-name">${k.name}</div>
+                <div class="keynote-aff">${k.aff || ''}</div>
+                ${k.note ? `<div class="keynote-note">${k.note}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+        root.appendChild(div);
       }
 
       function renderCommittees() {
@@ -1965,7 +2102,8 @@
           const url = getSessionUrl(s);
 
           const slot = document.createElement('div');
-          /* ✅ Add type class so the whole block is coloured by type */
+
+          // ✅ coloured block per type + live outline
           slot.className = `slot type-${s.type}` + (liveNow ? ' now' : '');
 
           slot.innerHTML = `
@@ -1980,8 +2118,8 @@
             <p>${s.desc || ''}</p>
 
             <div class="row">
-              <!-- ✅ Type pill matches the block colour -->
-              <span class="tag tag-${s.type}">${typeLabel(s.type)}</span>
+              <!-- ✅ coloured pill per type -->
+              <span class="tag type-${s.type}">${typeLabel(s.type)}</span>
 
               ${s.moderator && s.moderator !== '—' ? `<span class="tag">Moderator: ${s.moderator}</span>` : ''}
               ${liveNow ? `<span class="tag" style="border-color: rgba(34,197,94,.35); color: var(--text)">● Live now</span>` : ''}
@@ -2336,6 +2474,7 @@
         renderRooms();
         renderTracks();
         renderKeynotes();
+        renderGuest(); // ✅ NEW
         renderCommittees();
         applyFilters();
         initVideoHelp();
