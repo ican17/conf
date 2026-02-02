@@ -32,10 +32,10 @@
 
         --mono:
           ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          'Liberation Mono', 'Courier New', monospace;
+          "Liberation Mono", "Courier New", monospace;
         --sans:
           ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-          'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+          "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 
         /* =========================================================
            ✅ Type colour system (blocks + pills)
@@ -309,7 +309,7 @@
         overflow: hidden;
       }
       .hero:before {
-        content: '';
+        content: "";
         position: absolute;
         inset: -2px;
         background:
@@ -332,6 +332,47 @@
         display: grid;
         gap: 12px;
       }
+      /* =========================
+   BIG header countdown
+   ========================= */
+.countdown {
+  margin-top: 10px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  background: linear-gradient(
+    180deg,
+    rgba(34, 197, 94, 0.18),
+    rgba(11, 18, 34, 0.55)
+  );
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.countdown-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.countdown-time {
+  font-family: var(--mono);
+  font-weight: 950;
+  font-size: clamp(26px, 4.4vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-top: 6px;
+}
+
+.countdown-sub {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted2);
+  font-weight: 800;
+}
 
       .topline {
         display: flex;
@@ -466,7 +507,7 @@
         flex-wrap: wrap;
         gap: 10px;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 12px 12px;
         border: 1px solid var(--line);
         border-radius: 999px;
@@ -574,6 +615,14 @@
         gap: 10px;
         margin-top: 10px;
       }
+      /* Force KPIs to use full card width */
+.about-full-width {
+  width: 100%;
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+}
+
       @media (max-width: 520px) {
         .kpis {
           grid-template-columns: 1fr;
@@ -658,7 +707,7 @@
         gap: 10px;
         align-items: center;
       }
-      input[type='search'],
+      input[type="search"],
       select {
         width: 100%;
         padding: 10px 11px;
@@ -960,6 +1009,51 @@
         font-size: 13px;
         color: var(--muted2);
       }
+/* === Expandable bio (Keynotes + Guest) === */
+.bio-details {
+  margin-top: 10px;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  background: rgba(7, 11, 21, 0.35);
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bio-details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  user-select: none;
+  color: var(--text);
+}
+
+.bio-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.bio-details summary .hint {
+  color: var(--muted2);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.bio-details .bio-inner {
+  padding: 0 12px 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.bio-details[open] summary {
+  background: rgba(96, 165, 250, 0.08);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.18);
+}
 
       /* Toast */
       .toast {
@@ -988,7 +1082,7 @@
         background: rgba(7, 11, 21, 0.35);
         overflow: hidden;
       }
-
+ 
       .details summary {
         list-style: none;
         cursor: pointer;
@@ -1018,6 +1112,41 @@
       .details .inner {
         padding: 0 12px 12px;
       }
+      .details[open] summary .count {
+  content: '';
+}
+.details summary .count {
+  font-weight: 950;
+}
+.details[open] summary .count::before {
+  content: '−';
+}
+.details summary .count::before {
+  content: '+';
+}
+
+      /* ✅ President bios (consistent width + tidy spacing) */
+.president-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.president-card {
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(11, 18, 34, 0.55);
+}
+
+.president-name {
+  font-weight: 950;
+  margin-bottom: 6px;
+}
+
+.president-card .details {
+  width: 100%; /* ✅ same width for all expandable blocks */
+}
 
       .committee-ul {
         margin: 0;
@@ -1136,7 +1265,7 @@
               your timezone: <span id="tzLabel" class="mono">…</span></span
             >
           </div>
-
+          
           <h1>
             The First Online International Conference on Second Language Writing
           </h1>
@@ -1146,50 +1275,34 @@
             programme (Day 1 & Day 2), Google Meet help videos, and a 1-page
             troubleshooting PDF for participants.
           </p>
-
-          <div class="cta">
-            <a
-              class="btn primary"
-              id="btnJoinMain"
-              href="#"
-              target="_blank"
-              rel="noopener"
-              >Join Main Hall</a
-            >
-            <a class="btn good" id="btnDownloadPDF" href="#" rel="noopener"
-              >Download quick help PDF</a
-            >
-          </div>
+          <div class="countdown" aria-live="polite">
+  <div class="countdown-label">Event starts in</div>
+  <div class="countdown-time" id="countdownTime">—</div>
+  <div class="countdown-sub" id="countdownSub">11 Feb 2026 · 09:00 (GMT+1)</div>
+</div>
+          
         </div>
       </header>
 
       <div class="sticky">
-        <div class="bar">
-          <div class="bar-left">
-            <div class="bar-title">
-              <span class="badge"><span class="dot g"></span> Live hub</span>
-              <span class="pill">Dates: <strong>11–12 Feb 2026</strong></span>
-              <span class="pill"
-                >Times shown in: <strong id="tzValue">—</strong></span
-              >
-            </div>
-            <span class="pill">Current: <strong id="liveLabel">—</strong></span>
-          </div>
-
-          <div class="bar-right">
-            <span class="pill mono" id="localClock">—</span>
-            <a
-              class="btn primary small"
-              id="btnJoinLive"
-              href="#"
-              target="_blank"
-              rel="noopener"
-              >Join live room</a
-            >
-            <span class="chip" id="btnCopyHub">Copy hub link</span>
-          </div>
-        </div>
+  <div class="bar">
+    <div class="bar-left">
+      <div class="bar-title">
+        <span class="badge"><span class="dot g"></span> Live hub</span>
+        <span class="pill">Dates: <strong>11–12 Feb 2026</strong></span>
+        <span class="pill"
+          >Times shown in: <strong id="tzValue">—</strong></span
+        >
       </div>
+
+      <!-- ✅ keep this -->
+      <span class="pill">Current: <strong id="liveLabel">—</strong></span>
+    </div>
+
+    <!-- ❌ remove bar-right entirely -->
+  </div>
+</div>
+
 
       <div class="grid">
         <!-- Programme -->
@@ -1295,11 +1408,26 @@
       <!-- Video Help -->
       <section class="card" id="video-help" style="margin-top: 16px">
         <div class="hd">
-          <h2>Video Help: Google Meet</h2>
-          <span class="muted tiny"
-            >Join, screen share, and fix mic/camera issues.</span
-          >
-        </div>
+  <div style="display:flex; flex-direction:column; gap:2px;">
+    <h2>Video Help: Google Meet</h2>
+    <span class="muted tiny">Join, screen share, and fix mic/camera issues.</span>
+  </div>
+
+  <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+    <a
+      class="btn pdf small"
+      id="btnDownloadPDF"
+      href="#"
+      rel="noopener"
+      title="Download the 1-page quick help PDF"
+      style="display:flex; align-items:center; gap:8px;"
+    >
+      Download quick help
+      <span class="tag" style="font-size:11px; padding:5px 8px;">(PDF)</span>
+    </a>
+  </div>
+</div>
+
 
         <div class="bd">
           <div class="toolbar">
@@ -1373,39 +1501,74 @@
 
         <!-- About -->
         <section class="card" id="about">
-          <div class="hd">
-            <h2>About the Conference</h2>
-            <span class="muted tiny">Overview</span>
-          </div>
-          <div class="bd">
-            <p style="margin: 0" class="muted">
-              Second language writing is a demanding, multifaceted skill
-              involving linguistic, cultural, and rhetorical dimensions. This
-              conference brings together teachers, researchers, and doctoral
-              students to share and discuss key issues in L2 writing and
-              research writing, including professional development and the
-              implications of generative AI.
-            </p>
+  <div class="hd">
+    <h2>About the Conference</h2>
+    <span class="muted tiny">Overview</span>
+  </div>
 
-            <div class="kpis" style="margin-top: 12px">
-              <div class="kpi">
-                <div class="label">Presidents of the conference</div>
-                <div class="value">
-                  Dr. Fatima Zohra Belkhir <br />
-                  Dr. Wafa Zekri
-                </div>
-              </div>
-              <div class="kpi">
-                <div class="label">Host</div>
-                <div class="value">University of Tlemcen (Algeria)</div>
-              </div>
-              <div class="kpi">
-                <div class="label">Partner Laboratory</div>
-                <div class="value">FLPATP Laboratory</div>
-              </div>
-            </div>
-          </div>
-        </section>
+  <div class="bd">
+  <p class="muted" style="margin: 0">
+    Second language writing is a demanding, multifaceted skill involving
+    linguistic, cultural, and rhetorical dimensions. This conference brings
+    together teachers, researchers, and doctoral students to share and discuss
+    key issues in L2 writing and research writing, including professional
+    development and the implications of generative AI.
+  </p><br />
+  <span><b>Presidents of the Conference</b></span>
+  <div class="president-list">
+    <div class="president-card">
+      <div class="president-name">Dr. Fatima Zohra Belkhir</div>
+
+      <details class="details">
+        <summary>
+          <span>Short bio</span>
+          <span class="count"></span>
+        </summary>
+        <div class="inner">
+          Fatima Zohra Belkhir, an associate professor at the Department of English,
+University of Tlemcen, the Founder and manager of the first English Writing
+Support Centre initiative at the University of Tlemcen, and a former Assistant
+Director and Consultant of the Algerian Online Writing Lab (AOWL). She received
+her Doctorate Degree in TEFL and Applied linguistics from the University of
+Tlemcen in 2017. She holds a Writing Consultant Training Certificate from INAS
+(International Network of Algerian Scientists). She is a PRFU project manager and
+her project centres around the foundation of Writing Centres in Algerian
+Universities. She is a regular reviewer at IJLTER (International Journal of Learning
+Teaching and Educational Research). Her research interests include but are not
+limited to Second Language Writing; Writing Centre Pedagogy; Intercultural
+Communication; Psycho-Pedagogy; and TEFL. She is passionate about tutoring,
+teaching and research, and she enjoys travelling and collaborating with academics
+inside and outside Algeria.
+        </div>
+      </details>
+    </div>
+
+    <div class="president-card">
+      <div class="president-name">Dr. Wafa Zekri</div>
+
+      <details class="details">
+        <summary>
+          <span>Short bio</span>
+          <span class="count"></span>
+        </summary>
+        <div class="inner">
+          Wafa Zekri received a PhD in Applied Linguistics from the University of
+Northampton, UK. She is a CELTA-qualified trainer and holds a certificate from
+Cambridge Center, UK. She received her Masters degree from the University of
+Tlemcen, Algeria. She is an Associate Professor at the University of Tlemcen,
+Algeria. She has a background in narrative inquiry and collaborative
+auto-ethnography. She ran research workshops for PhD students at Tlemcen
+University. She has an interdisciplinary research interest in English Language
+Teaching (ELT), Teacher Professional Identity (PTI), Second Language Writing, and
+online feedback. She is a reviewer in Algerian journals and International journals.
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+</section>
+
       </div>
 
       <section class="speakers-grid" style="margin-top: 16px">
@@ -1494,121 +1657,121 @@
       // Google Meet rooms (from your programme)
       const ROOMS = {
         main: {
-          name: 'Main Hall',
-          purpose: 'Opening, keynotes, closing',
-          url: 'https://meet.google.com/mmn-bncu-cht',
+          name: "Main Hall",
+          purpose: "Opening, keynotes, closing",
+          url: "https://meet.google.com/mmn-bncu-cht",
         },
 
         p1: {
-          name: 'Panel Room 1',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/gkd-fiwn-pzj',
+          name: "Panel Room 1",
+          purpose: "Panels",
+          url: "https://meet.google.com/gkd-fiwn-pzj",
         },
         p2: {
-          name: 'Panel Room 2',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/oqj-ynfg-syn',
+          name: "Panel Room 2",
+          purpose: "Panels",
+          url: "https://meet.google.com/oqj-ynfg-syn",
         },
         p3: {
-          name: 'Panel Room 3',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/fwp-sugv-ghh',
+          name: "Panel Room 3",
+          purpose: "Panels",
+          url: "https://meet.google.com/fwp-sugv-ghh",
         },
         p4: {
-          name: 'Panel Room 4',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/jtw-anpv-owm',
+          name: "Panel Room 4",
+          purpose: "Panels",
+          url: "https://meet.google.com/jtw-anpv-owm",
         },
         p5: {
-          name: 'Panel Room 5',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/mcb-gknq-dfi',
+          name: "Panel Room 5",
+          purpose: "Panels",
+          url: "https://meet.google.com/mcb-gknq-dfi",
         },
         p6: {
-          name: 'Panel Room 6',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/srr-ckeu-fmd',
+          name: "Panel Room 6",
+          purpose: "Panels",
+          url: "https://meet.google.com/srr-ckeu-fmd",
         },
 
         p7: {
-          name: 'Panel Room 7',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/ayx-mzav-vjs',
+          name: "Panel Room 7",
+          purpose: "Panels",
+          url: "https://meet.google.com/ayx-mzav-vjs",
         },
         p8: {
-          name: 'Panel Room 8',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/kcg-ewpv-aoi',
+          name: "Panel Room 8",
+          purpose: "Panels",
+          url: "https://meet.google.com/kcg-ewpv-aoi",
         },
         p9: {
-          name: 'Panel Room 9',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/xkq-erpv-uzj',
+          name: "Panel Room 9",
+          purpose: "Panels",
+          url: "https://meet.google.com/xkq-erpv-uzj",
         },
         p10: {
-          name: 'Panel Room 10',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/iqo-zvjs-qau',
+          name: "Panel Room 10",
+          purpose: "Panels",
+          url: "https://meet.google.com/iqo-zvjs-qau",
         },
         p11: {
-          name: 'Panel Room 11',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/dqb-gfmd-rzf',
+          name: "Panel Room 11",
+          purpose: "Panels",
+          url: "https://meet.google.com/dqb-gfmd-rzf",
         },
         p12: {
-          name: 'Panel Room 12',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/ctc-yakm-fct',
+          name: "Panel Room 12",
+          purpose: "Panels",
+          url: "https://meet.google.com/ctc-yakm-fct",
         },
         p13: {
-          name: 'Panel Room 13',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/pne-eyrp-svh',
+          name: "Panel Room 13",
+          purpose: "Panels",
+          url: "https://meet.google.com/pne-eyrp-svh",
         },
         p14: {
-          name: 'Panel Room 14',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/ajn-ofax-qkn',
+          name: "Panel Room 14",
+          purpose: "Panels",
+          url: "https://meet.google.com/ajn-ofax-qkn",
         },
         p15: {
-          name: 'Panel Room 15',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/jns-ojsd-xqq',
+          name: "Panel Room 15",
+          purpose: "Panels",
+          url: "https://meet.google.com/jns-ojsd-xqq",
         },
         p16: {
-          name: 'Panel Room 16',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/ktu-xhus-dvv',
+          name: "Panel Room 16",
+          purpose: "Panels",
+          url: "https://meet.google.com/ktu-xhus-dvv",
         },
         p17: {
-          name: 'Panel Room 17',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/jxf-jzdx-mnq',
+          name: "Panel Room 17",
+          purpose: "Panels",
+          url: "https://meet.google.com/jxf-jzdx-mnq",
         },
         p18: {
-          name: 'Panel Room 18',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/nfu-cyix-cko',
+          name: "Panel Room 18",
+          purpose: "Panels",
+          url: "https://meet.google.com/nfu-cyix-cko",
         },
         p19: {
-          name: 'Panel Room 19',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/xkn-mrbt-hpc',
+          name: "Panel Room 19",
+          purpose: "Panels",
+          url: "https://meet.google.com/xkn-mrbt-hpc",
         },
         p20: {
-          name: 'Panel Room 20',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/ujr-kbci-tzu',
+          name: "Panel Room 20",
+          purpose: "Panels",
+          url: "https://meet.google.com/ujr-kbci-tzu",
         },
         p21: {
-          name: 'Panel Room 21',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/usw-pdav-odn',
+          name: "Panel Room 21",
+          purpose: "Panels",
+          url: "https://meet.google.com/usw-pdav-odn",
         },
         p22: {
-          name: 'Panel Room 22',
-          purpose: 'Panels',
-          url: 'https://meet.google.com/vvs-upui-rfr',
+          name: "Panel Room 22",
+          purpose: "Panels",
+          url: "https://meet.google.com/vvs-upui-rfr",
         },
       };
 
@@ -1616,378 +1779,473 @@
       const SESSIONS = [
         // DAY 1
         {
-          id: 'd1-opening',
-          day: 'day1',
-          type: 'opening',
-          title: 'Opening Session',
-          desc: 'Opening session.',
-          startGMT1: '2026-02-11T09:00:00+01:00',
-          endGMT1: '2026-02-11T09:45:00+01:00',
-          roomKey: 'main',
-          moderator: '—',
+          id: "d1-opening",
+          day: "day1",
+          type: "opening",
+          title: "Opening Session",
+          desc: "Opening session.",
+          startGMT1: "2026-02-11T09:00:00+01:00",
+          endGMT1: "2026-02-11T09:45:00+01:00",
+          roomKey: "main",
+          moderator: "—",
         },
         {
-          id: 'd1-keynote-morning',
-          day: 'day1',
-          type: 'keynote',
-          title: 'Morning Keynote Speakers Session',
-          desc: 'Moderator: Dr. F.Z. BELKHIR',
-          startGMT1: '2026-02-11T10:00:00+01:00',
-          endGMT1: '2026-02-11T11:30:00+01:00',
-          roomKey: 'main',
-          moderator: 'Dr. F.Z. BELKHIR',
+          id: "d1-keynote-morning",
+          day: "day1",
+          type: "keynote",
+          title: "Morning Keynote Speakers Session",
+          desc: "Moderator: Dr. F.Z. BELKHIR",
+          startGMT1: "2026-02-11T10:00:00+01:00",
+          endGMT1: "2026-02-11T11:30:00+01:00",
+          roomKey: "main",
+          moderator: "Dr. F.Z. BELKHIR",
         },
 
         ...[
-          ['p1', 'Panel 1', 'Dr Manel Mizab'],
-          ['p2', 'Panel 2', 'Dr. Adder FZ'],
-          ['p3', 'Panel 3', 'Prof. Radia Guerza'],
-          ['p4', 'Panel 4', 'Prof. Nadia Ghounane'],
-          ['p5', 'Panel 5', 'Dr. Kamila Ghouali'],
-          ['p6', 'Panel 6', 'Dr. Sarra Menal Ferkache'],
+          ["p1", "Panel 1", "Dr Manel Mizab"],
+          ["p2", "Panel 2", "Dr. Adder FZ"],
+          ["p3", "Panel 3", "Prof. Radia Guerza"],
+          ["p4", "Panel 4", "Prof. Nadia Ghounane"],
+          ["p5", "Panel 5", "Dr. Kamila Ghouali"],
+          ["p6", "Panel 6", "Dr. Sarra Menal Ferkache"],
         ].map(([roomKey, panel, moderator], i) => ({
           id: `d1-panels-am-${i + 1}`,
-          day: 'day1',
-          type: 'panel',
+          day: "day1",
+          type: "panel",
           title: `Morning Panels — ${panel}`,
           desc: `Moderator: ${moderator}`,
-          startGMT1: '2026-02-11T11:30:00+01:00',
-          endGMT1: '2026-02-11T12:30:00+01:00',
+          startGMT1: "2026-02-11T11:30:00+01:00",
+          endGMT1: "2026-02-11T12:30:00+01:00",
           roomKey,
           moderator,
         })),
 
         {
-          id: 'd1-break',
-          day: 'day1',
-          type: 'break',
-          title: 'Break',
-          desc: 'Break between morning and afternoon sessions.',
-          startGMT1: '2026-02-11T12:30:00+01:00',
-          endGMT1: '2026-02-11T14:00:00+01:00',
-          roomKey: 'main',
-          moderator: '—',
+          id: "d1-break",
+          day: "day1",
+          type: "break",
+          title: "Break",
+          desc: "Break between morning and afternoon sessions.",
+          startGMT1: "2026-02-11T12:30:00+01:00",
+          endGMT1: "2026-02-11T14:00:00+01:00",
+          roomKey: "main",
+          moderator: "—",
           noJoin: true,
         },
 
         {
-          id: 'd1-keynote-afternoon',
-          day: 'day1',
-          type: 'keynote',
-          title: 'Afternoon Keynote Speakers Session',
-          desc: 'Moderator: Dr. Wafa Zekri',
-          startGMT1: '2026-02-11T14:00:00+01:00',
-          endGMT1: '2026-02-11T15:00:00+01:00',
-          roomKey: 'main',
-          moderator: 'Dr. Wafa Zekri',
+          id: "d1-keynote-afternoon",
+          day: "day1",
+          type: "keynote",
+          title: "Afternoon Keynote Speakers Session",
+          desc: "Moderator: Dr. Wafa Zekri",
+          startGMT1: "2026-02-11T14:00:00+01:00",
+          endGMT1: "2026-02-11T15:00:00+01:00",
+          roomKey: "main",
+          moderator: "Dr. Wafa Zekri",
         },
 
         ...[
-          ['p7', 'Panel 7', 'Dr. Yassamina Abdat'],
-          ['p8', 'Panel 8', 'Dr Fouzia Bennacer'],
-          ['p9', 'Panel 9', 'Dr Yasser Benmoussa'],
-          ['p10', 'Panel 10', 'Dr. Nour El Houda Benlakhdar'],
-          ['p11', 'Panel 11', 'Dr Abdelkader Bensafa'],
-          ['p12', 'Panel 12', 'Prof. Hafida Hamzaoui'],
+          ["p7", "Panel 7", "Dr. Yassamina Abdat"],
+          ["p8", "Panel 8", "Dr Fouzia Bennacer"],
+          ["p9", "Panel 9", "Dr Yasser Benmoussa"],
+          ["p10", "Panel 10", "Dr. Nour El Houda Benlakhdar"],
+          ["p11", "Panel 11", "Dr Abdelkader Bensafa"],
+          ["p12", "Panel 12", "Prof. Hafida Hamzaoui"],
         ].map(([roomKey, panel, moderator], i) => ({
           id: `d1-panels-pm-${i + 1}`,
-          day: 'day1',
-          type: 'panel',
+          day: "day1",
+          type: "panel",
           title: `Afternoon Panels — ${panel}`,
           desc: `Moderator: ${moderator}`,
-          startGMT1: '2026-02-11T15:00:00+01:00',
-          endGMT1: '2026-02-11T16:00:00+01:00',
+          startGMT1: "2026-02-11T15:00:00+01:00",
+          endGMT1: "2026-02-11T16:00:00+01:00",
           roomKey,
           moderator,
         })),
 
         // DAY 2
         {
-          id: 'd2-keynote-morning',
-          day: 'day2',
-          type: 'keynote',
-          title: 'Morning Keynote Speakers Session',
-          desc: 'Moderator: Dr. F.Z. Adder',
-          startGMT1: '2026-02-12T09:00:00+01:00',
-          endGMT1: '2026-02-12T10:00:00+01:00',
-          roomKey: 'main',
-          moderator: 'Dr. F.Z. Adder',
+          id: "d2-keynote-morning",
+          day: "day2",
+          type: "keynote",
+          title: "Morning Keynote Speakers Session",
+          desc: "Moderator: Dr. F.Z. Adder",
+          startGMT1: "2026-02-12T09:00:00+01:00",
+          endGMT1: "2026-02-12T10:00:00+01:00",
+          roomKey: "main",
+          moderator: "Dr. F.Z. Adder",
         },
 
         ...[
-          ['p1', 'Panel 1', 'Dr. Ouafa Ouarniki'],
-          ['p2', 'Panel 2', 'Dr. Bekhta Belaid'],
-          ['p3', 'Panel 3', 'Ms Maroua Houachine'],
-          ['p4', 'Panel 4', 'Ms. Sonia Wei Jie Tiao'],
-          ['p5', 'Panel 5', 'Mrs. Asma Belkhir'],
-          ['p6', 'Panel 6', 'Prof. Faiza Senouci Meberbeche'],
+          ["p1", "Panel 1", "Dr. Ouafa Ouarniki"],
+          ["p2", "Panel 2", "Dr. Bekhta Belaid"],
+          ["p3", "Panel 3", "Ms Maroua Houachine"],
+          ["p4", "Panel 4", "Ms. Sonia Wei Jie Tiao"],
+          ["p5", "Panel 5", "Mrs. Asma Belkhir"],
+          ["p6", "Panel 6", "Prof. Faiza Senouci Meberbeche"],
         ].map(([roomKey, panel, moderator], i) => ({
           id: `d2-panels-10-${i + 1}`,
-          day: 'day2',
-          type: 'panel',
+          day: "day2",
+          type: "panel",
           title: `Morning Panels — ${panel}`,
           desc: `Moderator: ${moderator}`,
-          startGMT1: '2026-02-12T10:00:00+01:00',
-          endGMT1: '2026-02-12T11:00:00+01:00',
+          startGMT1: "2026-02-12T10:00:00+01:00",
+          endGMT1: "2026-02-12T11:00:00+01:00",
           roomKey,
           moderator,
         })),
 
         ...[
-          ['p7', 'Panel 7', 'Dr Imane Berrouba Tani'],
-          ['p8', 'Panel 8', 'Ms. Fatma Zohra Hadj Ameur'],
-          ['p9', 'Panel 9', 'Ms. Feriel Abid'],
-          ['p10', 'Panel 10', 'Prof. Wassila Bouklikha Graia'],
-          ['p11', 'Panel 11', 'Dr. Khadidja Hammoudi'],
-          ['p12', 'Panel 12', 'Ms Zineb Benayad'],
+          ["p7", "Panel 7", "Dr Imane Berrouba Tani"],
+          ["p8", "Panel 8", "Ms. Fatma Zohra Hadj Ameur"],
+          ["p9", "Panel 9", "Ms. Feriel Abid"],
+          ["p10", "Panel 10", "Prof. Wassila Bouklikha Graia"],
+          ["p11", "Panel 11", "Dr. Khadidja Hammoudi"],
+          ["p12", "Panel 12", "Ms Zineb Benayad"],
         ].map(([roomKey, panel, moderator], i) => ({
           id: `d2-panels-11-${i + 1}`,
-          day: 'day2',
-          type: 'panel',
+          day: "day2",
+          type: "panel",
           title: `Morning Panels — ${panel}`,
           desc: `Moderator: ${moderator}`,
-          startGMT1: '2026-02-12T11:00:00+01:00',
-          endGMT1: '2026-02-12T12:00:00+01:00',
+          startGMT1: "2026-02-12T11:00:00+01:00",
+          endGMT1: "2026-02-12T12:00:00+01:00",
           roomKey,
           moderator,
         })),
 
         {
-          id: 'd2-break',
-          day: 'day2',
-          type: 'break',
-          title: 'Break',
-          desc: 'Break before afternoon panels.',
-          startGMT1: '2026-02-12T12:00:00+01:00',
-          endGMT1: '2026-02-12T13:00:00+01:00',
-          roomKey: 'main',
-          moderator: '—',
+          id: "d2-break",
+          day: "day2",
+          type: "break",
+          title: "Break",
+          desc: "Break before afternoon panels.",
+          startGMT1: "2026-02-12T12:00:00+01:00",
+          endGMT1: "2026-02-12T13:00:00+01:00",
+          roomKey: "main",
+          moderator: "—",
           noJoin: true,
         },
 
         ...[
-          ['p13', 'Panel 13', 'Ms. Romaissa Nechad'],
-          ['p14', 'Panel 14', 'Dr. Nassima Hamza Cherif', null],
-          ['p15', 'Panel 15', 'Amina Boumediene', null],
-          ['p16', 'Panel 16', 'Prof. Assia Benettayeb', null],
-          ['p17', 'Panel 17', 'Dr. Amira Benabdelkader', null],
+          ["p13", "Panel 13", "Ms. Romaissa Nechad"],
+          ["p14", "Panel 14", "Dr. Nassima Hamza Cherif", null],
+          ["p15", "Panel 15", "Amina Boumediene", null],
+          ["p16", "Panel 16", "Prof. Assia Benettayeb", null],
+          ["p17", "Panel 17", "Dr. Amira Benabdelkader", null],
         ].map(([roomKey, panel, moderator, customUrl], i) => ({
           id: `d2-panels-13-${i + 1}`,
-          day: 'day2',
-          type: 'panel',
+          day: "day2",
+          type: "panel",
           title: `Afternoon Panels — ${panel}`,
           desc: `Moderator: ${moderator}`,
-          startGMT1: '2026-02-12T13:00:00+01:00',
-          endGMT1: '2026-02-12T14:00:00+01:00',
+          startGMT1: "2026-02-12T13:00:00+01:00",
+          endGMT1: "2026-02-12T14:00:00+01:00",
           roomKey,
           moderator,
           customUrl: customUrl || undefined,
         })),
 
         ...[
-          ['p18', 'Panel 18', 'Prof. Nouria Messaoudi'],
-          ['p19', 'Panel 19', 'Dr. Iman Dib'],
-          ['p20', 'Panel 20', 'Dr. Nadjet Khenioui'],
-          ['p21', 'Panel 21', 'Mrs. Maureen Rooney'],
-          ['p22', 'Panel 22', 'Dr. Zeyneb Yousfi'],
+          ["p18", "Panel 18", "Prof. Nouria Messaoudi"],
+          ["p19", "Panel 19", "Dr. Iman Dib"],
+          ["p20", "Panel 20", "Dr. Nadjet Khenioui"],
+          ["p21", "Panel 21", "Mrs. Maureen Rooney"],
+          ["p22", "Panel 22", "Dr. Zeyneb Yousfi"],
         ].map(([roomKey, panel, moderator], i) => ({
           id: `d2-panels-14-${i + 1}`,
-          day: 'day2',
-          type: 'panel',
+          day: "day2",
+          type: "panel",
           title: `Afternoon Panels — ${panel}`,
           desc: `Moderator: ${moderator}`,
-          startGMT1: '2026-02-12T14:00:00+01:00',
-          endGMT1: '2026-02-12T15:00:00+01:00',
+          startGMT1: "2026-02-12T14:00:00+01:00",
+          endGMT1: "2026-02-12T15:00:00+01:00",
           roomKey,
           moderator,
         })),
 
         {
-          id: 'd2-closing',
-          day: 'day2',
-          type: 'closing',
-          title: 'Closing Session',
-          desc: 'Closing session.',
-          startGMT1: '2026-02-12T15:00:00+01:00',
-          endGMT1: '2026-02-12T15:30:00+01:00',
-          roomKey: 'main',
-          moderator: '—',
+          id: "d2-closing",
+          day: "day2",
+          type: "closing",
+          title: "Closing Session",
+          desc: "Closing session.",
+          startGMT1: "2026-02-12T15:00:00+01:00",
+          endGMT1: "2026-02-12T15:30:00+01:00",
+          roomKey: "main",
+          moderator: "—",
         },
       ];
 
       const TRACKS = [
         {
-          title: 'Track 1',
-          desc: 'Second language writing: theory, research, teaching, and assessment.',
+          title: "Track 1",
+          desc: "Second language writing: theory, research, teaching, and assessment.",
         },
         {
-          title: 'Track 2',
-          desc: 'Professional development in teaching second language writing.',
+          title: "Track 2",
+          desc: "Professional development in teaching second language writing.",
         },
         {
-          title: 'Track 3',
-          desc: 'Second language writing in interdisciplinary research.',
+          title: "Track 3",
+          desc: "Second language writing in interdisciplinary research.",
         },
         {
-          title: 'Track 4',
-          desc: 'Professionalization of second language writing teachers.',
+          title: "Track 4",
+          desc: "Professionalization of second language writing teachers.",
         },
         {
-          title: 'Track 5',
-          desc: 'Second language research writing: backward and forward.',
+          title: "Track 5",
+          desc: "Second language research writing: backward and forward.",
         },
         {
-          title: 'Track 6',
-          desc: 'Second language writing and generative AI.',
+          title: "Track 6",
+          desc: "Second language writing and generative AI.",
         },
       ];
 
       // Keynotes with pictures
       const KEYNOTES = [
         {
-          name: 'Dr. Tara Keenan',
-          aff: 'John Cabot University, Rome, Italy.',
-          note: '',
-          img: 'assets/keynote-tara-keenan.png',
+          name: "Dr. Tara Keenan",
+          aff: "John Cabot University, Rome, Italy.",
+          note: "",
+          img: "assets/keynote-tara-keenan.png",
+          bio: `Tara Keenan received her BA and MA from New York University. She attended a
+study abroad program in Ireland where she first learned about intercultural
+
+dialogue and global citizenship. Afterward, she taught high school English in New
+York and then decided to attend Dublin’s Trinity College for her Ph.D. in European
+History, focusing on feminism in Ireland. Upon finishing that program and
+publishing a book entitled, “Irish Women and Street Politics”, she moved back to
+New York, where she directed a local office of the New York Civil Liberties Union
+for three years. During that time, she taught history and politics at various
+colleges and universities in New York, including Fordham University and CUNY.
+She’s currently a writing instructor and the coordinator of the John Cabot
+University Writing Center in Rome.`, 
         },
         {
-          name: 'Prof. Touria Drid',
-          aff: 'University of Ouargla, Algeria.',
-          note: '',
-          img: 'assets/keynote-touria-drid.png',
+          name: "Prof. Touria Drid",
+          aff: "University of Ouargla, Algeria.",
+          note: "",
+          img: "assets/keynote-touria-drid.png",
+          bio: `Touria Drid is a full professor of applied linguistics at Kasdi Merbah University,
+Ouargla, Algeria, where she has been teaching since 2004. She holds a doctorate
+in applied linguistics (2014) and a Magister degree in linguistics and ELT (2003)
+from Constantine 1 University. Her scholarly work focuses on academic writing,
+discourse analysis, argumentation theory and intercultural communication. She
+co-edited Teaching Academic Writing as a DisciplineSpecific Skill in Higher
+Education (2020) and authored A Course in Applied Linguistics (2024) and An
+Introduction to Research Methodology (2025). Her research has appeared in
+peer-reviewed national and international journals, and she regularly serves as a
+reviewer for specialized publications. She has delivered plenary and paper
+presentations at international ELT and education conferences in Oman, Jordan,
+the United Arab Emirates, and Algeria, and has participated in visiting scholar
+training programmes in the Netherlands and the United States. She served as
+President of the Scientific Council of the Faculty of Letters and Languages at
+Ouargla University (2022-2025). Prof. Drid is actively engaged in graduate and
+post-graduate education/supervision activities, curriculum development, and
+academic quality assurance in Algeria.`, 
         },
         {
-          name: 'Dr. Abu Saleh Mohammad Rafi',
-          aff: 'University of Liberal Arts Bangladesh.',
-          note: '',
-          img: 'assets/keynote-abu-saleh-mohammad-rafi.png',
+          name: "Dr. Abu Saleh Mohammad Rafi",
+          aff: "University of Liberal Arts Bangladesh.",
+          note: "",
+          img: "assets/keynote-abu-saleh-mohammad-rafi.png",
+          bio: `Abu Saleh Mohammad Rafi, PhD, is an Associate Professor of Linguistics at the University
+of Liberal Arts Bangladesh and a Visiting Research Fellow at the University of Groningen.
+He also serves as a Senior Research Fellow on an Australian Research Council-funded project
+at the University of South Australia. He has published extensively, co-edited volumes on
+linguistic justice, and delivered keynotes and invited talks at the University of the
+Witwatersrand, China Three Gorges University, McGill University, James Cook University,
+and Buriram Rajabhat University. A transdisciplinary scholar in sociolinguistics,
+translanguaging, and critical AI studies, Dr Rafi’s work advances equity in multilingual
+education.`, 
         },
         {
-          name: 'Mr. Laurence Cleary',
-          aff: 'Limerick University, Ireland.',
-          note: '',
-          img: 'assets/keynote-laurence-cleary.png',
+          name: "Mr. Laurence Cleary",
+          aff: "Limerick University, Ireland.",
+          note: "",
+          img: "assets/keynote-laurence-cleary.png",
+          bio: `Lawrence Cleary, is the former Director of the Regional Writing Centre at the
+
+University of Limerick (UL). He is an Educational Developer for the Centre for
+Teaching and Learning, UL. His background is in English, Rhetoric and Composition
+Studies (BA in English, Illinois State University) and English Language Teaching
+(MA in ELT, University of Limerick). Lawrence has facilitated writer development in
+several disciplines. He currently teaches writing to first-year Engineers in the BEng
+course, and the module leader for ME6051 Advanced Technical Communication
+for Engineers for the ME and MSc programmes in Mechanical and Aeronautical
+Engineers. His interests are in Rhetoric, Critical Theory, Writing Pedagogy,
+Language Teaching, Systemic Functional Linguistics, Stylistics, Corpus Studies,
+Learning Styles and Strategies.`, 
         },
         {
-          name: 'Dr. Kamal Belmihoub',
-          aff: 'English Department at Baruch College in the City University of New York. US',
-          note: '',
-          img: 'assets/keynote-kamal-belmihoub.png',
+          name: "Dr. Kamal Belmihoub",
+          aff: "English Department at Baruch College in the City University of New York. US",
+          note: "",
+          img: "assets/keynote-kamal-belmihoub.png",
+          bio: `Kamal Belmihoub is a faculty member in the English Department at Baruch
+College in the City University of New York. He began his studies at M'hamed
+Bougara University in Boumerdes and completed his PhD at Purdue University in
+Indiana, USA. He teaches and researches issues in writing studies and applied
+linguistics.`, 
         },
         {
-          name: 'Prof. Irene Verde Peleato',
-          aff: 'University of Valencia, Spain.',
-          note: '',
-          img: 'assets/keynote-irene-verde-peleato.png',
+          name: "Prof. Irene Verde Peleato",
+          aff: "University of Valencia, Spain.",
+          note: "",
+          img: "assets/keynote-irene-verde-peleato.png",
+          bio: `Irene Verde Peleato is a researcher and professor (PPL) in the Department of
+Theory of Education at the University of Valencia, Spain, specializing in education,
+particularly educational technology, inclusive education, and university pedagogy.
+She holds a PhD in Education from the same university and contributes to the
+GREAV research group (University Pedagogy, Lifelong Learning, and Sustainable
+Development).`, 
         },
         {
-          name: 'Prof. Ahmed Bacher',
-          aff: 'University of Biskra, Algeria',
-          note: '',
-          img: 'assets/keynote-ahmed-bacher.png',
+          name: "Prof. Ahmed Bacher",
+          aff: "University of Biskra, Algeria",
+          note: "",
+          img: "assets/keynote-ahmed-bacher.png",
+          bio: `Ahmed Bacher earned a B.A from the University of Algiers (1994) and Magister
+from Mohamed Khider University of Biskra (2005). Prof. Bacher started his
+professional career teaching English to high school and middle school students
+(1994). He also taught a two-term French course to middle school students (1997-
+1987). Prof. Bacher joined the English teaching staff in 2005-6 at The English
+Department at Mohamed Khider University of Biskra. Prof. Bacher supervised
+seven doctoral students (now all completed and defended their PhD theses) in
+literature, discourse analysis, and language teaching methodology. Prof. Bacher
+examined 30 doctoral PhD theses and hundreds of Master’s dissertations. Prof.
+Bacher has participated in different national and international conferences, most
+of which were in Algeria. Prof. Bacher speaks three languages (English, French,
+and Italian) besides Arabic. His interests range from research methodology, to
+educational psychology, and to foreign language teaching methodology.`, 
         },
       ];
 
       // ✅ NEW: Guest Speaker (edit this)
       const GUEST_SPEAKER = {
-        name: 'Dr. Maureen Rooney',
-        aff: 'Rhode Island University, U.S.A.',
-        note: 'Writing Specialist.',
-        img: 'assets/maureen.jpg',
+        name: "Dr. Maureen Rooney",
+        aff: "Rhode Island University, U.S.A.",
+        note: "Writing Specialist.",
+        img: "assets/maureen.jpg",
+        bio: `Maureen Rooney, an American researcher and recipient of the Fulbright US
+Scholars grant in the University of Tlemcen (Algeria). She is an expert educator in
+Teaching English as a Second Language (TESOL), recognized for her work at the
+University of Rhode Island (URI) Graduate Writing and Presenting Lab, with
+experience as a Fulbright Scholar.`, 
       };
 
       const COMMITTEES = {
         scientific: {
           president:
-            'President: Dr. Fatima Zohra Adder (University of Tlemcen, Algeria).',
+            "President: Dr. Fatima Zohra Adder (University of Tlemcen, Algeria).",
           members: [
-            'Prof. Karen Barto, the University of Arizona, USA',
-            'Prof. Madhubala A/P Bava Harji, SEGi University & Colleges, Malaysia',
-            'Prof. Chokri Smaoui, Sultan Qaboos University, Oman',
-            'Prof Rana Khan, Canadian College, Kuwait ‘Algonquin’, Kuwait',
-            'Ms. Sonia Wei Jie Tiao, Chaoyang University of Technology, Taiwan',
-            'Dr. Kamal Belmihoub, City University of New York, USA',
-            'Dr. Natalia Borzykh, Moscow State Pedagogical University, Russia',
-            'Prof. Hakan Emekci, TED University, Ankara, Turkey',
-            'Prof. Nadia Ghounane, University of Saida, Algeria',
-            'Prof. Drid Touria, University of Ourgla, Algeria',
-            'Prof. Radia Guerza, University of Batna 2, Algeria',
-            'Prof. Amine Belmekki, University of Tlemcen, Algeria',
-            'Prof. Hafida Hamzaoui, University of Tlemcen, Algeria',
-            'Prof. Boumediene Berrabah, University of Tlemcen, Algeria',
-            'Prof. Wassila Bouklikha, University of Tlemcen',
-            'Prof. Ahmed Bechar, University of Biskra, Algeria',
-            'Prof. Faiza Senouci Mebarbeche, University of Tlemcen, Algeria',
-            'Dr. Nadjet Khenioui, Algiers University 3, Algeria',
-            'Dr. Fouzia Bennacer, University Centre of Mila, Algeria',
-            'Dr. Yasser Benmoussa, University of Biskra, Algeria',
-            'Dr. Hadia Hakem, University of Tlemcen, Algeria',
-            'Dr. Maliha Yamina Abi-ayad, University of Tlemcen, Algeria',
-            'Dr. Hidaya Amina Hemche, University of Tlemcen, Algeria',
+            "Prof. Karen Barto, the University of Arizona, USA",
+            "Prof. Madhubala A/P Bava Harji, SEGi University & Colleges, Malaysia",
+            "Prof. Chokri Smaoui, Sultan Qaboos University, Oman",
+            "Prof Rana Khan, Canadian College, Kuwait ‘Algonquin’, Kuwait",
+            "Ms. Sonia Wei Jie Tiao, Chaoyang University of Technology, Taiwan",
+            "Dr. Kamal Belmihoub, City University of New York, USA",
+            "Dr. Natalia Borzykh, Moscow State Pedagogical University, Russia",
+            "Prof. Hakan Emekci, TED University, Ankara, Turkey",
+            "Prof. Nadia Ghounane, University of Saida, Algeria",
+            "Prof. Drid Touria, University of Ourgla, Algeria",
+            "Prof. Radia Guerza, University of Batna 2, Algeria",
+            "Prof. Amine Belmekki, University of Tlemcen, Algeria",
+            "Prof. Hafida Hamzaoui, University of Tlemcen, Algeria",
+            "Prof. Boumediene Berrabah, University of Tlemcen, Algeria",
+            "Prof. Wassila Bouklikha, University of Tlemcen",
+            "Prof. Ahmed Bechar, University of Biskra, Algeria",
+            "Prof. Faiza Senouci Mebarbeche, University of Tlemcen, Algeria",
+            "Dr. Nadjet Khenioui, Algiers University 3, Algeria",
+            "Dr. Fouzia Bennacer, University Centre of Mila, Algeria",
+            "Dr. Yasser Benmoussa, University of Biskra, Algeria",
+            "Dr. Hadia Hakem, University of Tlemcen, Algeria",
+            "Dr. Maliha Yamina Abi-ayad, University of Tlemcen, Algeria",
+            "Dr. Hidaya Amina Hemche, University of Tlemcen, Algeria",
           ],
         },
 
         organising: {
           president:
-            'President: Yassamina Abdat (University of Tlemcen, Algeria).',
+            "President: Yassamina Abdat (University of Tlemcen, Algeria).",
           members: [
-            'Dr. Assia Benettayeb, University of Tlemcen',
-            'Dr. Kamila Ghouali, University of Tlemcen',
-            'Dr. Sarra Menal Ferkache, University of Tlemcen',
-            'Mrs. Asma Belkhir, University of Tlemcen',
-            'Mrs. Karima Benheddi, University of Tlemcen',
-            'Mr. Abdelkader Guendouz, University of Tlemcen',
-            'Mr. M’sebbel Abderrahim, University of Tlemcen',
-            'Ms. Fatma Zohra Hadj Ameur, University of Tlemcen',
-            'Ms. Romaissa Nechad, University of Tlemcen',
-            'Ms. Sarah Nesrine Hamidi, University of Tlemcen',
-            'Ms. Zahira Belaidouni, University of Tlemcen',
-            'Ms. Zineb Benayad, University of Tlemcen',
-            'Ms. Nardjes Labed, University of Tlemcen',
-            'Ms. Bouchra Benaicha, University of Tlemcen',
-            'Ms. Meriem Rayene Lamraoui, University of Tlemcen',
-            'Ms. Dallal Grini, University of Tlemcen',
-            'Ms. Fatima Zohra Beldaha, University of Tlemcen',
+            "Prof. Assia Benettayeb, University of Tlemcen, Algeria",
+            "Prof. Abdelkader Bensafa, University of Tlemcen, Algeria",
+            "Dr. Nouria Messaoudi, University of Ain Temouchent, Algeria",
+            "Dr. Kamila Ghouali, University of Tlemcen, Algeria",
+            "Dr. Sarra Menal Ferkache, University of Tlemcen, Algeria",
+            "Dr. Zeyneb Yousfi, University of Tlemcen, Algeria",
+            "Dr. Manel Mizab, University of Tebessa, Algeria",
+            "Dr. Ouafa Ouarniki, University of Djelfa, Algeria",
+            "Dr. Bekhta Belaid, University of Naama, Algeria",
+            "Dr. Nour El Houda Benlakhdar, University of Tlemcen, Algeria",
+            "Dr. Imane Berrouba Tani, University of Tlemcen, Algeria",
+            "Dr. Iman Dib, University of Tlemcen, Algeria",
+            "Dr. Amina Boumediene, University of Ain Temouchent, Algeria",
+            "Dr. Amira Benabdelkader, University of Constantine 1, Algeria",
+            "Dr. Nassima Hamza Cherif, University of Tlemcen, Algeria",
+            "Dr. Khadidja Hammoudi, University of Tlemcen, Algeria",
+            "Mrs. Asma Belkhir, University of Tlemcen, Algeria",
+            "Mrs. Maureen Rooney, Rhode Island University, U.S.",
+            "Mrs. Karima Benheddi, University of Tlemcen, Algeria",
+            "Mr. Abdelkader Guendouz, University of Tlemcen, Algeria",
+            "Mr. M’sebbel Abderrahim, University of Tlemcen, Algeria",
+            "Ms. Fatma Zohra Hadj Ameur, University of Tlemcen, Algeria",
+            "Ms. Romaissa Nechad, University of Tlemcen, Algeria",
+            "Ms. Sarah Nesrine Hamidi, University of Tlemcen, Algeria",
+            "Ms. Zahira Belaidouni, University of Tlemcen, Algeria",
+            "Ms. Zineb Benayad, University of Tlemcen, Algeria",
+            "Ms. Nardjes Labed, University of Tlemcen, Algeria",
+            "Ms. Bouchra Benaicha, University of Tlemcen, Algeria",
+            "Ms. Meriem Rayene Lamraoui, University of Tlemcen, Algeria",
+            "Ms. Dallal Grini, University of Tlemcen, Algeria",
+            "Ms. Fatima Zohra Beldaha, University of Tlemcen, Algeria",
+            "Ms. Maroua Houachine, University of Tiaret, Algeria",
+            "Ms. Feriel Abid, University of Tlemcen, Algeria",
           ],
         },
       };
 
       const VIDEO_HELP = [
         {
-          title: 'How to Join a Google Meet (attendees)',
-          category: 'Getting started',
-          notes: 'Join from a link + key buttons before joining.',
-          youtubeId: '_ftEhUczkII',
+          title: "How to Join a Google Meet (attendees)",
+          category: "Getting started",
+          notes: "Join from a link + key buttons before joining.",
+          youtubeId: "_ftEhUczkII",
         },
         {
-          title: 'Google Meet Basics (controls & features)',
-          category: 'Getting started',
-          notes: 'Mute, camera, chat, layouts, and more.',
-          youtubeId: 'yZMGOrOBMY0',
+          title: "Google Meet Basics (controls & features)",
+          category: "Getting started",
+          notes: "Mute, camera, chat, layouts, and more.",
+          youtubeId: "yZMGOrOBMY0",
         },
         {
-          title: 'How to Present / Share Screen in Google Meet',
-          category: 'Screen sharing',
-          notes: 'Tab vs window vs entire screen; best practices.',
-          youtubeId: '4KjrFSFQr5Q',
+          title: "How to Present / Share Screen in Google Meet",
+          category: "Screen sharing",
+          notes: "Tab vs window vs entire screen; best practices.",
+          youtubeId: "4KjrFSFQr5Q",
         },
         {
-          title: 'Join Google Meet on Mobile (Android/iOS)',
-          category: 'Mobile',
-          notes: 'Useful for phone/tablet participants.',
-          youtubeId: 'L46JudR9kdk',
+          title: "Join Google Meet on Mobile (Android/iOS)",
+          category: "Mobile",
+          notes: "Useful for phone/tablet participants.",
+          youtubeId: "L46JudR9kdk",
         },
         {
-          title: 'Fix Microphone Not Working in Google Meet',
-          category: 'Audio',
-          notes: 'Permissions + selecting correct microphone.',
-          youtubeId: 'EYgou618fD8',
+          title: "Fix Microphone Not Working in Google Meet",
+          category: "Audio",
+          notes: "Permissions + selecting correct microphone.",
+          youtubeId: "EYgou618fD8",
         },
         {
-          title: 'Fix Camera Not Working in Google Meet',
-          category: 'Camera',
-          notes: 'Permissions + closing other apps using camera.',
-          youtubeId: 'P3qg9NPe5Do',
+          title: "Fix Camera Not Working in Google Meet",
+          category: "Camera",
+          notes: "Permissions + closing other apps using camera.",
+          youtubeId: "P3qg9NPe5Do",
         },
       ];
 
@@ -1998,37 +2256,37 @@
       const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
       function showToast(msg) {
-        const t = $('#toast');
+        const t = $("#toast");
         t.textContent = msg;
-        t.classList.add('show');
+        t.classList.add("show");
         clearTimeout(showToast._timer);
-        showToast._timer = setTimeout(() => t.classList.remove('show'), 1700);
+        showToast._timer = setTimeout(() => t.classList.remove("show"), 1700);
       }
 
       async function copyText(text) {
         try {
           await navigator.clipboard.writeText(text);
-          showToast('Copied');
+          showToast("Copied");
         } catch {
-          const ta = document.createElement('textarea');
+          const ta = document.createElement("textarea");
           ta.value = text;
           document.body.appendChild(ta);
           ta.select();
-          document.execCommand('copy');
+          document.execCommand("copy");
           ta.remove();
-          showToast('Copied');
+          showToast("Copied");
         }
       }
 
       function fmtLocalRange(startISO, endISO) {
         const start = new Date(startISO);
         const end = new Date(endISO);
-        const optsTime = { hour: '2-digit', minute: '2-digit' };
+        const optsTime = { hour: "2-digit", minute: "2-digit" };
         const optsDate = {
-          weekday: 'short',
-          year: 'numeric',
-          month: 'short',
-          day: '2-digit',
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
         };
         return {
           time: `${start.toLocaleTimeString(undefined, optsTime)}–${end.toLocaleTimeString(undefined, optsTime)}`,
@@ -2046,24 +2304,24 @@
       }
 
       function getSessionUrl(s) {
-        if (s.noJoin) return '';
-        if (s.roomKey === 'custom' && s.customUrl) return s.customUrl;
+        if (s.noJoin) return "";
+        if (s.roomKey === "custom" && s.customUrl) return s.customUrl;
         return ROOMS[s.roomKey]?.url || ROOMS.main.url;
       }
 
       function sessionDayLabel(day) {
-        return day === 'day1' ? 'Day 1 · 11 Feb 2026' : 'Day 2 · 12 Feb 2026';
+        return day === "day1" ? "Day 1 · 11 Feb 2026" : "Day 2 · 12 Feb 2026";
       }
 
       function typeLabel(type) {
         return (
           {
-            opening: 'Opening',
-            keynote: 'Keynote',
-            panel: 'Panel',
-            break: 'Break',
-            closing: 'Closing',
-          }[type] || 'Session'
+            opening: "Opening",
+            keynote: "Keynote",
+            panel: "Panel",
+            break: "Break",
+            closing: "Closing",
+          }[type] || "Session"
         );
       }
 
@@ -2091,41 +2349,41 @@
        * Renderers
        ***********************/
       function renderRooms() {
-        const root = $('#roomList');
-        root.innerHTML = '';
+        const root = $("#roomList");
+        root.innerHTML = "";
 
         const order = [
-          'main',
-          'p1',
-          'p2',
-          'p3',
-          'p4',
-          'p5',
-          'p6',
-          'p7',
-          'p8',
-          'p9',
-          'p10',
-          'p11',
-          'p12',
-          'p13',
-          'p14',
-          'p15',
-          'p16',
-          'p17',
-          'p18',
-          'p19',
-          'p20',
-          'p21',
-          'p22',
+          "main",
+          "p1",
+          "p2",
+          "p3",
+          "p4",
+          "p5",
+          "p6",
+          "p7",
+          "p8",
+          "p9",
+          "p10",
+          "p11",
+          "p12",
+          "p13",
+          "p14",
+          "p15",
+          "p16",
+          "p17",
+          "p18",
+          "p19",
+          "p20",
+          "p21",
+          "p22",
         ].filter((k) => ROOMS[k]);
 
         order.forEach((k) => {
           const r = ROOMS[k];
-          const div = document.createElement('div');
-          div.className = 'room';
+          const div = document.createElement("div");
+          div.className = "room";
           const btnClass =
-            k === 'main' ? 'primary' : k === 'help' ? 'good' : 'ghost';
+            k === "main" ? "primary" : k === "help" ? "good" : "ghost";
           div.innerHTML = `
           <div>
             <h3>${r.name}</h3>
@@ -2140,80 +2398,118 @@
           root.appendChild(div);
         });
 
-        $$('[data-copy-room]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const k = el.getAttribute('data-copy-room');
+        $$("[data-copy-room]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const k = el.getAttribute("data-copy-room");
             copyText(ROOMS[k].url);
           });
         });
       }
 
       function renderTracks() {
-        const root = $('#tracksList');
-        root.innerHTML = '';
+        const root = $("#tracksList");
+        root.innerHTML = "";
         TRACKS.forEach((t) => {
-          const div = document.createElement('div');
-          div.className = 'item';
+          const div = document.createElement("div");
+          div.className = "item";
           div.innerHTML = `<div class="title">${t.title}</div><div class="desc">${t.desc}</div>`;
           root.appendChild(div);
         });
       }
 
       function renderKeynotes() {
-        const root = $('#keynoteList');
-        root.innerHTML = '';
-        KEYNOTES.forEach((k) => {
-          const div = document.createElement('div');
-          div.className = 'item';
-          div.innerHTML = `
-  <div class="speaker-card">
-    <div class="speaker">
-      <img class="speaker-photo" src="${k.img}" alt="${k.name}" />
-      <div>
-        <div class="speaker-name">${k.name}</div>
-        <div class="speaker-aff">${k.aff || ''}</div>
-        ${k.note ? `<div class="speaker-note">${k.note}</div>` : ''}
+  const root = $('#keynoteList');
+  root.innerHTML = '';
+
+  KEYNOTES.forEach((k) => {
+    const div = document.createElement('div');
+    div.className = 'item';
+
+    const bioHTML =
+      k.bio && String(k.bio).trim()
+        ? `
+          <details class="bio-details">
+            <summary>
+              <span>Bio</span>
+              <span class="hint">Click to expand</span>
+            </summary>
+            <div class="bio-inner">
+              ${String(k.bio).trim()}
+            </div>
+          </details>
+        `
+        : '';
+
+    div.innerHTML = `
+      <div class="speaker-card">
+        <div class="speaker">
+          <img class="speaker-photo" src="${k.img}" alt="${k.name}" />
+          <div style="min-width:0; width:100%;">
+            <div class="speaker-name">${k.name}</div>
+            <div class="speaker-aff">${k.aff || ''}</div>
+            ${k.note ? `<div class="speaker-note">${k.note}</div>` : ''}
+            ${bioHTML}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-`;
-          root.appendChild(div);
-        });
-      }
+    `;
+
+    root.appendChild(div);
+  });
+}
+
 
       // ✅ NEW
       function renderGuest() {
-        const root = $('#guestList');
-        if (!root) return;
-        root.innerHTML = '';
+  const root = $('#guestList');
+  if (!root) return;
+  root.innerHTML = '';
 
-        const k = GUEST_SPEAKER;
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.innerHTML = `
-  <div class="speaker-card">
-    <div class="speaker">
-      <img class="speaker-photo" src="${k.img}" alt="${k.name}" />
-      <div>
-        <div class="speaker-name">${k.name}</div>
-        <div class="speaker-aff">${k.aff || ''}</div>
-        ${k.note ? `<div class="speaker-note">${k.note}</div>` : ''}
+  const k = GUEST_SPEAKER;
+
+  const bioHTML =
+    k.bio && String(k.bio).trim()
+      ? `
+        <details class="bio-details">
+          <summary>
+            <span>Bio</span>
+            <span class="hint">Click to expand</span>
+          </summary>
+          <div class="bio-inner">
+            ${String(k.bio).trim()}
+          </div>
+        </details>
+      `
+      : '';
+
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.innerHTML = `
+    <div class="speaker-card">
+      <div class="speaker">
+        <img class="speaker-photo" src="${k.img}" alt="${k.name}" />
+        <div style="min-width:0; width:100%;">
+          <div class="speaker-name">${k.name}</div>
+          <div class="speaker-aff">${k.aff || ''}</div>
+          ${k.note ? `<div class="speaker-note">${k.note}</div>` : ''}
+          ${bioHTML}
+        </div>
       </div>
     </div>
-  </div>
-`;
-        root.appendChild(div);
-      }
+  `;
+
+  root.appendChild(div);
+}
 
       function renderCommittees() {
         const sci = COMMITTEES.scientific;
         const org = COMMITTEES.organising;
 
         function membersListHTML(arr) {
-          return `<ul class="committee-ul">${arr.map((m) => `<li>${m}</li>`).join('')}</ul>`;
+          return `<ul class="committee-ul">${arr.map((m) => `<li>${m}</li>`).join("")}</ul>`;
         }
 
-        $('#scientificCommittee').innerHTML = `
+        $("#scientificCommittee").innerHTML = `
     <div class="muted2">${sci.president}</div>
     <div class="expand-hint">Click “Members” to expand the full list.</div>
 
@@ -2228,7 +2524,7 @@
     </details>
   `;
 
-        $('#organisingCommittee').innerHTML = `
+        $("#organisingCommittee").innerHTML = `
     <div class="muted2">${org.president}</div>
     <div class="expand-hint">Click “Members” to expand the full list.</div>
 
@@ -2245,15 +2541,15 @@
       }
 
       function applyFilters() {
-        const q = ($('#q').value || '').trim().toLowerCase();
-        const day = $('#dayFilter').value;
-        const type = $('#typeFilter').value;
+        const q = ($("#q").value || "").trim().toLowerCase();
+        const day = $("#dayFilter").value;
+        const type = $("#typeFilter").value;
 
         const filtered = SESSIONS.filter((s) => {
-          const okDay = day === 'all' || s.day === day;
-          const okType = type === 'all' || s.type === type;
+          const okDay = day === "all" || s.day === day;
+          const okType = type === "all" || s.type === type;
           const hay =
-            `${s.title} ${s.desc || ''} ${s.moderator || ''} ${sessionDayLabel(s.day)}`.toLowerCase();
+            `${s.title} ${s.desc || ""} ${s.moderator || ""} ${sessionDayLabel(s.day)}`.toLowerCase();
           const okQ = !q || hay.includes(q);
           return okDay && okType && okQ;
         }).sort((a, b) => new Date(a.startGMT1) - new Date(b.startGMT1));
@@ -2262,8 +2558,8 @@
       }
 
       function renderSchedule(list) {
-        const root = $('#schedule');
-        root.innerHTML = '';
+        const root = $("#schedule");
+        root.innerHTML = "";
 
         const now = new Date();
         const { live, next } = getLiveAndNext(now);
@@ -2273,10 +2569,10 @@
           const liveNow = live && s.id === live.id;
           const url = getSessionUrl(s);
 
-          const slot = document.createElement('div');
+          const slot = document.createElement("div");
 
           // ✅ coloured block per type + live outline
-          slot.className = `slot type-${s.type}` + (liveNow ? ' now' : '');
+          slot.className = `slot type-${s.type}` + (liveNow ? " now" : "");
 
           slot.innerHTML = `
           <div class="timebox">
@@ -2287,32 +2583,32 @@
 
           <div>
             <h4>${s.title}</h4>
-            <p>${s.desc || ''}</p>
+            <p>${s.desc || ""}</p>
 
             <div class="row">
               <!-- ✅ coloured pill per type -->
               <span class="tag type-${s.type}">${typeLabel(s.type)}</span>
 
-              ${s.moderator && s.moderator !== '—' ? `<span class="tag">Moderator: ${s.moderator}</span>` : ''}
-              ${liveNow ? `<span class="tag" style="border-color: rgba(34,197,94,.35); color: var(--text)">● Live now</span>` : ''}
-              ${next && s.id === next.id ? `<span class="tag" style="border-color: rgba(245,158,11,.35); color: var(--text)">Next</span>` : ''}
-              ${s.noJoin ? `<span class="tag" style="border-color: rgba(148,163,184,.35); color: var(--text)">No room</span>` : ''}
+              ${s.moderator && s.moderator !== "—" ? `<span class="tag">Moderator: ${s.moderator}</span>` : ""}
+              ${liveNow ? `<span class="tag" style="border-color: rgba(34,197,94,.35); color: var(--text)">● Live now</span>` : ""}
+              ${next && s.id === next.id ? `<span class="tag" style="border-color: rgba(245,158,11,.35); color: var(--text)">Next</span>` : ""}
+              ${s.noJoin ? `<span class="tag" style="border-color: rgba(148,163,184,.35); color: var(--text)">No room</span>` : ""}
             </div>
 
             <div class="row">
-              ${s.noJoin ? '' : `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Join room</a>`}
-              ${s.noJoin ? '' : `<span class="chip" data-copy-url="${s.id}">Copy link</span>`}
+              ${s.noJoin ? "" : `<a class="btn primary" href="${url}" target="_blank" rel="noopener">Join room</a>`}
+              ${s.noJoin ? "" : `<span class="chip" data-copy-url="${s.id}">Copy link</span>`}
             </div>
 
-            ${s.noJoin ? '' : `<p class="muted tiny" style="margin:10px 0 0">Room: <span class="mono">${shortMeet(url)}</span></p>`}
+            ${s.noJoin ? "" : `<p class="muted tiny" style="margin:10px 0 0">Room: <span class="mono">${shortMeet(url)}</span></p>`}
           </div>
         `;
           root.appendChild(slot);
         });
 
-        $$('[data-copy-url]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const id = el.getAttribute('data-copy-url');
+        $$("[data-copy-url]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const id = el.getAttribute("data-copy-url");
             const s = SESSIONS.find((x) => x.id === id);
             copyText(getSessionUrl(s));
           });
@@ -2327,10 +2623,10 @@
       }
 
       function initVideoHelp() {
-        const grid = $('#videoGrid');
-        const featured = $('#featuredVideo');
-        const q = $('#videoSearch');
-        const cat = $('#videoCategory');
+        const grid = $("#videoGrid");
+        const featured = $("#featuredVideo");
+        const q = $("#videoSearch");
+        const cat = $("#videoCategory");
 
         if (!grid || !featured || !q || !cat) return;
 
@@ -2338,7 +2634,7 @@
           new Set(VIDEO_HELP.map((v) => v.category)),
         ).sort();
         categories.forEach((c) => {
-          const opt = document.createElement('option');
+          const opt = document.createElement("option");
           opt.value = c;
           opt.textContent = c;
           cat.appendChild(opt);
@@ -2349,29 +2645,29 @@
         }
 
         function render() {
-          const term = (q.value || '').trim().toLowerCase();
+          const term = (q.value || "").trim().toLowerCase();
           const chosen = cat.value;
 
           const items = VIDEO_HELP.filter((v) => {
-            const okCat = chosen === 'all' || v.category === chosen;
+            const okCat = chosen === "all" || v.category === chosen;
             const hay = `${v.title} ${v.notes} ${v.category}`.toLowerCase();
             const okQ = !term || hay.includes(term);
             return okCat && okQ;
           });
 
-          grid.innerHTML = '';
+          grid.innerHTML = "";
 
           if (!items.length) {
-            const empty = document.createElement('div');
-            empty.className = 'item';
+            const empty = document.createElement("div");
+            empty.className = "item";
             empty.innerHTML = `<div class="title">No videos found</div><div class="desc muted">Try a different keyword or topic.</div>`;
             grid.appendChild(empty);
             return;
           }
 
           items.forEach((v) => {
-            const card = document.createElement('div');
-            card.className = 'video-card';
+            const card = document.createElement("div");
+            card.className = "video-card";
             card.innerHTML = `
             <div class="video-left">
               <div class="video-title">${v.title}</div>
@@ -2386,18 +2682,18 @@
             </div>
           `;
 
-            const watchBtn = card.querySelector('button');
-            const copyChip = card.querySelector('.chip');
+            const watchBtn = card.querySelector("button");
+            const copyChip = card.querySelector(".chip");
 
-            watchBtn.addEventListener('click', () => {
+            watchBtn.addEventListener("click", () => {
               featured.src = ytEmbedUrl(v.youtubeId);
-              $('#video-help').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
+              $("#video-help").scrollIntoView({
+                behavior: "smooth",
+                block: "start",
               });
             });
 
-            copyChip.addEventListener('click', async () => {
+            copyChip.addEventListener("click", async () => {
               const url = `https://youtu.be/${v.youtubeId}`;
               await copyText(url);
             });
@@ -2406,8 +2702,8 @@
           });
         }
 
-        q.addEventListener('input', render);
-        cat.addEventListener('change', render);
+        q.addEventListener("input", render);
+        cat.addEventListener("change", render);
         render();
       }
 
@@ -2416,9 +2712,9 @@
        ***********************/
       function wrapText(doc, text, x, y, maxWidth, lineHeight) {
         const words = String(text).split(/\s+/);
-        let line = '';
+        let line = "";
         for (let i = 0; i < words.length; i++) {
-          const test = (line ? line + ' ' : '') + words[i];
+          const test = (line ? line + " " : "") + words[i];
           const w = doc.getTextWidth(test);
           if (w > maxWidth && line) {
             doc.text(line, x, y);
@@ -2439,26 +2735,26 @@
         const { jsPDF } = window.jspdf || {};
         if (!jsPDF) {
           alert(
-            'PDF library did not load. Please check your internet connection and try again.',
+            "PDF library did not load. Please check your internet connection and try again.",
           );
           return;
         }
 
-        const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+        const doc = new jsPDF({ unit: "mm", format: "a4" });
         const W = 210,
           H = 297;
         const margin = 16;
         let y = 18;
 
-        doc.setFont('helvetica', 'bold');
+        doc.setFont("helvetica", "bold");
         doc.setFontSize(16);
-        doc.text('Google Meet Quick Help (1 page)', margin, y);
+        doc.text("Google Meet Quick Help (1 page)", margin, y);
         y += 8;
 
-        doc.setFont('helvetica', 'normal');
+        doc.setFont("helvetica", "normal");
         doc.setFontSize(11);
         doc.setTextColor(60);
-        doc.text('Top 6 problems & fixes for participants', margin, y);
+        doc.text("Top 6 problems & fixes for participants", margin, y);
         y += 8;
 
         doc.setDrawColor(210);
@@ -2466,68 +2762,68 @@
         y += 8;
 
         doc.setTextColor(20);
-        doc.setFont('helvetica', 'bold');
+        doc.setFont("helvetica", "bold");
         doc.setFontSize(11.8);
-        doc.text('Conference:', margin, y);
-        doc.setFont('helvetica', 'normal');
+        doc.text("Conference:", margin, y);
+        doc.setFont("helvetica", "normal");
         doc.text(
-          'The First Online International Conference on Second Language Writing',
+          "The First Online International Conference on Second Language Writing",
           margin + 24,
           y,
         );
         y += 9;
 
-        doc.setFont('helvetica', 'normal');
+        doc.setFont("helvetica", "normal");
         doc.setFontSize(10.8);
 
         const items = [
           {
-            t: '1) Microphone muted / no one hears me',
+            t: "1) Microphone muted / no one hears me",
             b: [
-              'Unmute in Meet (mic icon).',
-              'In Chrome: lock icon → Site settings → Microphone → Allow.',
-              'Meet: ⋮ → Settings → Audio → select the correct microphone.',
-              'Disconnect Bluetooth headsets if audio routes to the wrong device.',
+              "Unmute in Meet (mic icon).",
+              "In Chrome: lock icon → Site settings → Microphone → Allow.",
+              "Meet: ⋮ → Settings → Audio → select the correct microphone.",
+              "Disconnect Bluetooth headsets if audio routes to the wrong device.",
             ],
           },
           {
-            t: '2) Camera blocked / black screen',
+            t: "2) Camera blocked / black screen",
             b: [
-              'Lock icon → Site settings → Camera → Allow.',
-              'Close other apps using the camera (Zoom/Teams/WhatsApp Desktop).',
-              'Meet: ⋮ → Settings → Video → choose the correct camera.',
+              "Lock icon → Site settings → Camera → Allow.",
+              "Close other apps using the camera (Zoom/Teams/WhatsApp Desktop).",
+              "Meet: ⋮ → Settings → Video → choose the correct camera.",
             ],
           },
           {
-            t: '3) Echo / feedback',
+            t: "3) Echo / feedback",
             b: [
-              'If using two devices, keep audio ON in only one device.',
-              'Use headphones to prevent speaker sound re-entering the mic.',
-              'Lower speaker volume if needed.',
+              "If using two devices, keep audio ON in only one device.",
+              "Use headphones to prevent speaker sound re-entering the mic.",
+              "Lower speaker volume if needed.",
             ],
           },
           {
-            t: '4) Can’t present a tab / screen share not working',
+            t: "4) Can’t present a tab / screen share not working",
             b: [
-              'Use Chrome (recommended).',
-              'Click “Present now” → choose “A Chrome tab” (best for sharing tab audio).',
-              'Refresh and rejoin if the button is missing.',
+              "Use Chrome (recommended).",
+              "Click “Present now” → choose “A Chrome tab” (best for sharing tab audio).",
+              "Refresh and rejoin if the button is missing.",
             ],
           },
           {
-            t: '5) “Ask to join” / can’t enter',
+            t: "5) “Ask to join” / can’t enter",
             b: [
-              'Wait for the host/co-host to admit you (they may admit in batches).',
-              'Rejoin once if you think you clicked the wrong link.',
-              'Without a Google account, host admission is required.',
+              "Wait for the host/co-host to admit you (they may admit in batches).",
+              "Rejoin once if you think you clicked the wrong link.",
+              "Without a Google account, host admission is required.",
             ],
           },
           {
-            t: '6) Low bandwidth (freezing / robotic audio)',
+            t: "6) Low bandwidth (freezing / robotic audio)",
             b: [
-              'Turn off camera temporarily to stabilise audio.',
-              'Close other tabs/downloads; move closer to Wi-Fi or use wired internet.',
-              'On mobile, switch network or use a stronger Wi-Fi.',
+              "Turn off camera temporarily to stabilise audio.",
+              "Close other tabs/downloads; move closer to Wi-Fi or use wired internet.",
+              "On mobile, switch network or use a stronger Wi-Fi.",
             ],
           },
         ];
@@ -2535,17 +2831,17 @@
         const maxWidth = W - margin * 2;
 
         for (const it of items) {
-          doc.setFont('helvetica', 'bold');
+          doc.setFont("helvetica", "bold");
           doc.setTextColor(0);
           doc.setFontSize(11.7);
           y = wrapText(doc, it.t, margin, y, maxWidth, 5.1);
 
-          doc.setFont('helvetica', 'normal');
+          doc.setFont("helvetica", "normal");
           doc.setFontSize(10.6);
           doc.setTextColor(40);
 
           for (const bullet of it.b) {
-            y = wrapText(doc, '• ' + bullet, margin + 2, y, maxWidth - 2, 4.9);
+            y = wrapText(doc, "• " + bullet, margin + 2, y, maxWidth - 2, 4.9);
           }
           y += 2.8;
         }
@@ -2553,52 +2849,42 @@
         doc.setTextColor(90);
         doc.setFontSize(9.5);
         doc.text(
-          'If issues persist, open the Help Desk room or contact conference support.',
+          "If issues persist, open the Help Desk room or contact conference support.",
           margin,
           H - 14,
         );
 
-        doc.save('Google-Meet-Quick-Help.pdf');
+        doc.save("Google-Meet-Quick-Help.pdf");
       }
 
       /***********************
        * Live/Next bar updater
        ***********************/
       function updateLiveBar() {
-        const now = new Date();
-        const { live, next } = getLiveAndNext(now);
+  const now = new Date();
+  const { live, next } = getLiveAndNext(now);
 
-        const clock = now.toLocaleString(undefined, {
-          weekday: 'short',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        });
-        $('#localClock').textContent = clock;
+  let label = 'No session live right now';
 
-        let label = 'No session live right now';
-        let joinUrl = ROOMS.main.url;
+  if (live) {
+    label = `${typeLabel(live.type)} · ${live.title}`;
+  } else if (next) {
+    const r = fmtLocalRange(next.startGMT1, next.endGMT1);
+    label = `Next: ${typeLabel(next.type)} · ${next.title} (${r.time})`;
+  }
 
-        if (live) {
-          label = `${typeLabel(live.type)} · ${live.title}`;
-          joinUrl = getSessionUrl(live);
-        } else if (next) {
-          const r = fmtLocalRange(next.startGMT1, next.endGMT1);
-          label = `Next: ${typeLabel(next.type)} · ${next.title} (${r.time})`;
-          joinUrl = getSessionUrl(next);
-        }
+  const el = document.querySelector('#liveLabel');
+  if (el) el.textContent = label;
+}
 
-        $('#liveLabel').textContent = label;
-        $('#btnJoinLive').href = joinUrl;
-      }
 
       /***********************
        * Highlight active menu item on scroll
        ***********************/
       function initActiveMenu() {
-        const links = $$('#menu a');
+        const links = $$("#menu a");
         const sections = links
-          .map((a) => document.querySelector(a.getAttribute('href')))
+          .map((a) => document.querySelector(a.getAttribute("href")))
           .filter(Boolean);
 
         const obs = new IntersectionObserver(
@@ -2608,33 +2894,75 @@
               .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
             if (!visible) return;
 
-            links.forEach((a) => a.classList.remove('active'));
-            const id = '#' + visible.target.id;
-            const active = links.find((a) => a.getAttribute('href') === id);
-            if (active) active.classList.add('active');
+            links.forEach((a) => a.classList.remove("active"));
+            const id = "#" + visible.target.id;
+            const active = links.find((a) => a.getAttribute("href") === id);
+            if (active) active.classList.add("active");
           },
           { root: null, threshold: [0.18, 0.28, 0.38, 0.48] },
         );
 
         sections.forEach((s) => obs.observe(s));
       }
+// Conference start moment (GMT+1)
+const EVENT_START_ISO = '2026-02-11T09:00:00+01:00';
+
+function fmtCountdown(ms) {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const days = Math.floor(total / 86400);
+  const hours = Math.floor((total % 86400) / 3600);
+  const mins = Math.floor((total % 3600) / 60);
+  const secs = total % 60;
+
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${days}d ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s`;
+}
+
+function updateCountdown() {
+  const el = document.querySelector('#countdownTime');
+  const sub = document.querySelector('#countdownSub');
+  if (!el) return;
+
+  const start = new Date(EVENT_START_ISO);
+  const now = new Date();
+  const diff = start - now;
+
+  if (diff <= 0) {
+    el.textContent = 'Event started';
+    if (sub) sub.textContent = 'Welcome — sessions are now live.';
+    return;
+  }
+
+  el.textContent = fmtCountdown(diff);
+
+  // Optional: show the visitor their local start time too
+  if (sub) {
+    const local = start.toLocaleString(undefined, {
+      weekday: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    sub.textContent = `Starts: ${local} (your time) · 09:00 (GMT+1)`;
+  }
+}
 
       /***********************
        * Init + events
        ***********************/
       (function init() {
         const tz =
-          Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local time';
-        $('#tzLabel').textContent = tz;
-        $('#tzValue').textContent = tz;
-        $('#tzKpi').textContent = tz;
+          Intl.DateTimeFormat().resolvedOptions().timeZone || "Local time";
+        $("#tzLabel").textContent = tz;
+        $("#tzValue").textContent = tz;
+        $("#tzKpi").textContent = tz;
 
-        $('#year').textContent = new Date().getFullYear();
+        $("#year").textContent = new Date().getFullYear();
 
         // Main hall links
-        $('#btnJoinMain').href = ROOMS.main.url;
-        $('#btnJoinLive').href = ROOMS.main.url;
-        $('#mainHallShort').textContent = shortMeet(ROOMS.main.url);
+        $("#mainHallShort").textContent = shortMeet(ROOMS.main.url);
 
         // render
         renderRooms();
@@ -2647,20 +2975,19 @@
         initActiveMenu();
 
         // filters
-        $('#q').addEventListener('input', applyFilters);
-        $('#dayFilter').addEventListener('change', applyFilters);
-        $('#typeFilter').addEventListener('change', applyFilters);
+        $("#q").addEventListener("input", applyFilters);
+        $("#dayFilter").addEventListener("change", applyFilters);
+        $("#typeFilter").addEventListener("change", applyFilters);
 
-        // top bar / buttons
-        $('#btnCopyHub').addEventListener('click', () =>
-          copyText(location.href),
-        );
-
+      
         // quick help PDF
-        $('#btnDownloadPDF').addEventListener('click', (e) => {
+        $("#btnDownloadPDF").addEventListener("click", (e) => {
           e.preventDefault();
           downloadQuickHelpPDF();
         });
+        //counter
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
         // live bar loop
         updateLiveBar();
